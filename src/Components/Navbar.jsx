@@ -1,4 +1,4 @@
-import styles from "../Components/CSS/Navbar.module.CSS";
+import styles from "../Components/CSS/Navbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, Link } from "react-router-dom";
