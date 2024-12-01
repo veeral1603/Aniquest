@@ -1,0 +1,77 @@
+.AnimeItem
+{
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+
+
+.CoverContainer
+{
+    overflow: hidden;
+    object-fit: contain;
+    border-radius: 8px;
+    
+    
+}
+
+.CoverContainer img
+{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 2/3;
+    border-radius: 8px;
+}
+
+.CoverContainer span
+{
+    font-size: 24px;
+    font-weight: 500;
+    color: #fae065;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 4px;
+    border-bottom-right-radius: 6px;
+    border-top-left-radius: 6px;
+    display: none;
+    line-height: 1.2;
+}
+
+.TitleContainer
+{
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.Title { font-size: 16px;}
+
+.TitleContainer p:first-child
+{
+    font-size: 28px;
+    font-weight: 500;
+    color: #fae065;
+}
+@media (max-width: 768px){
+    .TitleContainer { display: none;}
+
+    .CoverContainer span { display: block;}
+}
+
+@media (max-width: 992px){
+    .TitleContainer p:first-child { font-size: 24px;}
+    
+    .Title { font-size: 18px;}
+}
+
+@media (max-width: 1200px){
+    .TitleContainer p:first-child { font-size: 24px;}
+}
+
+@media (max-width: 1440px) {
+    .Title { font-size: 16px;}
+
+}

@@ -1,0 +1,15 @@
+.shareButton
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 12px;
+    border: none;
+    color: inherit;
+    background-color: #141414;
+    font-weight: 500;
+    width: 100%;
+    padding-block: 8px;
+    border-radius: 20px;
+}

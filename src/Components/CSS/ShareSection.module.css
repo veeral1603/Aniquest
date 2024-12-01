@@ -1,0 +1,42 @@
+.ShareSection
+{
+    background-color: rebeccapurple;
+    display: flex;
+    justify-content: flex-start;
+    padding-block: 10px;
+    background-color: #0e0e1b;
+}
+
+.ShareContainer
+{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.GifContainer
+{
+    width: 80px;
+    height: 80px;
+}
+
+.GifContainer img 
+{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.ShareText h3 
+{
+    color: #fae065
+}
+
+@media (max-width: 768px) {
+
+    .ShareSection { justify-content: center;}
+
+    .ShareText h3 { font-size: 16px;}
+    
+    .ShareText p {font-size: 12px;}
+}

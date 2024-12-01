@@ -1,0 +1,51 @@
+.searchBar 
+{
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    background-color: #F8F8FF;
+    border-radius: 4px;
+    width: 400px;
+}
+.searchBar form 
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.searchBar form input 
+{
+    padding-inline: 10px;
+    
+    background-color: transparent;
+    outline: none;
+    border: none;
+    flex: 1;
+}
+
+.searchBarBtns
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filterBtn
+{
+    border: none;
+    background-color: transparent;
+    color: #333;
+}
+
+@media (max-width: 1200px) {
+    .searchBar{
+        width: 300px;
+    }
+}
+
+@media (max-width: 768px){
+    .searchBar {display: none;}
+}

@@ -1,0 +1,32 @@
+.page-not-found
+{
+    height: 100%;
+    display: Flex;
+    align-items: Center;
+    justify-content: Center;
+    flex-direction: Column;
+    gap: 10px;
+}
+
+.page-not-found img
+{
+    margin-block-end: 20px;
+    width: 400px;
+}
+
+.page-not-found h1
+{
+    font-size: 36px;
+}
+
+.page-not-found button
+{
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .page-not-found img
+    {
+        width: 250px;
+    }
+}
