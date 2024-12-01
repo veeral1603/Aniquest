@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import "./CSS/Home.css";
 import FeaturedSlider from "../Components/FeaturedSlider";
 import PrimaryHeading from "../Components/PrimaryHeading";
-import AnimeItemBig from "../Components/AnimeItemBIg";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -15,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Navigation } from "swiper/modules";
 import ShareSection from "../Components/ShareSection";
+import AnimeItemBig from "../Components/AnimeItemBig";
 
 export default function Home() {
   const [trendingAnimeList, setTrendingAnimeList] = useState([]);
