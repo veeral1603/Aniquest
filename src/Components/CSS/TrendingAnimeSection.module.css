@@ -1,0 +1,42 @@
+/* Trending anime section  */
+
+.TrendingAnime
+{
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+}
+.SwiperButtons
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.SwiperButtons button 
+{
+    height: 50%;
+    padding-inline: 18px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 253, 253, 0.116);
+    
+    transition: .1s background-color;
+    color: white;
+    border-radius: 8px;
+}
+
+.SwiperButtons button:hover
+{
+    background-color: rgba(255, 253, 253, 0.2);
+}
+
+@media (max-width: 768px) 
+{
+    .SwiperButtons { display: none;}
+
+}
+

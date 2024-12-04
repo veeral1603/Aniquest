@@ -1,45 +1,52 @@
-/* Trending anime section  */
 
 
 
-.trending-anime
+/* Featured Anime  */
+
+.featured-anime-section
 {
-    width: 100%;
-    display: flex;
-    align-items: stretch;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(23%,1fr));
+    gap: 20px;
 }
-.swiper-buttons
+
+.featured-column h2 
 {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-block-end: 16px;
+}
+
+.column-list > li:not(:last-child)
+{
+    padding-block: 15px;
+    border-bottom: 1px solid rgb(41, 38, 54);
+}
+
+.column-list > li:last-child
+{
+    padding-block: 15px;
+    font-weight: 300;
+
+    &:hover {
+        color: #fae065;
+    }
+}
+
+@media (max-width: 1200px)
+{
+    .featured-anime-section { grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); }
+}
+
+
+
+@media (max-width: 768px) 
+{
+
+    .featured-anime-section { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));}
+
+    .featured-column h2 { font-size: 16px;}
+}
+
+
     
-}
-
-.swiper-buttons button 
-{
-    height: 50%;
-    padding-inline: 18px;
-    font-weight: 700;
-    border: none;
-    outline: none;
-    background-color: rgba(255, 253, 253, 0.116);
-    
-    transition: .1s background-color;
-    color: white;
-    border-radius: 8px;
-}
-
-.swiper-buttons button:hover
-{
-    background-color: rgba(255, 253, 253, 0.2);
-}
-
-
-
-@media (max-width: 768px) {
-    .swiper-buttons { display: none;}
-
-
-}

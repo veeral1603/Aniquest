@@ -1,9 +1,16 @@
+/* eslint-disable react/prop-types */
+
 import styles from "./CSS/FeaturedSlider.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons/faCirclePlay";
 import { faChevronRight, faClock } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/swiper-bundle.css";
+
+import { Link } from "react-router-dom";
 
 const monthNames = [
   "Jan",
@@ -20,30 +27,7 @@ const monthNames = [
   "Dec",
 ];
 
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/swiper-bundle.css";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
-export default function FeaturedSlider() {
-  const [animeList, setAnimeList] = useState([]);
-
-  useEffect(() => {
-    const featuredAnime = async () => {
-      try {
-        const res = await fetch(
-          `https://api.jikan.moe/v4/top/anime?filter=favorite&sfw=true&limit=10&page=3`
-        );
-        const data = await res.json();
-        setAnimeList(data.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    featuredAnime();
-  }, []);
-
+export default function FeaturedSlider({ data }) {
   return (
     <div className={`container`}>
       <Swiper
@@ -54,7 +38,7 @@ export default function FeaturedSlider() {
         pagination={{ clickable: true }}
         loop={true}
       >
-        {animeList.map((anime, index) => {
+        {data.map((anime, index) => {
           {
             const {
               mal_id,
@@ -130,7 +114,10 @@ export default function FeaturedSlider() {
                         <FontAwesomeIcon icon={faCirclePlay} />
                         Trailer
                       </a>
-                      <Link to={`/anime`} className={styles.detailBtn}>
+                      <Link
+                        to={`/anime/${mal_id}`}
+                        className={styles.detailBtn}
+                      >
                         Detail <FontAwesomeIcon icon={faChevronRight} />
                       </Link>
                     </div>

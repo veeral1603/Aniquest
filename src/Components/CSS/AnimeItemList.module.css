@@ -1,0 +1,65 @@
+.AnimeItemList 
+{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+.AnimeItemList:hover .Title 
+{
+    color: #fae065;
+}
+
+.CoverContainer
+{
+    overflow: hidden;
+    object-fit: contain;
+    height: 90px;
+    min-width: 60px;
+}
+
+.CoverContainer img 
+{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 2/3;
+}
+
+.Info
+{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: rgb(168, 168, 168);
+}
+
+.Tag
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    gap: 4px;
+    color: black;
+    background-color: rgb(252, 160, 255);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.ListText .Title
+{
+    font-size: 14px;
+    color: white;
+    margin-block-end: 6px;
+}
+
+.dot
+{
+    width: 4px;
+    height: 4px;
+    background-color: rgb(168, 168, 168);
+    border-radius: 50%;
+    display: inline-block;
+    margin-inline: 6px;
+}

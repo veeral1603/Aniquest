@@ -1,118 +1,168 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import "./CSS/Home.css";
 import FeaturedSlider from "../Components/FeaturedSlider";
 import PrimaryHeading from "../Components/PrimaryHeading";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/pagination";
+import Loader from "../Components/Loader";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
-import { Navigation } from "swiper/modules";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
 import ShareSection from "../Components/ShareSection";
-import AnimeItemBig from "../Components/AnimeItemBig";
+import AnimeItemList from "../Components/AnimeItemList";
+import { Link } from "react-router-dom";
+import TrendingAnimeSection from "../Components/TrendingAnimeSection";
 
 export default function Home() {
-  const [trendingAnimeList, setTrendingAnimeList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const [featuredSliderList, setFeaturedSliderList] = useState([]);
+  const [trendingAnimeList, setTrendingAnimeList] = useState([]);
+  const [airingAnimeList, setAiringAnimeList] = useState([]);
+  const [mostPopularAnimeList, setMostPopularAnimeList] = useState([]);
+  const [mostFavoriteAnimeList, setMostFavoriteAnimeList] = useState([]);
+  const [recentEpisodesList, setRecentEpisodesList] = useState([]);
+  const [genresList, setGenresList] = useState([]);
+
+  const fetchWithDelay = async (urls, delay) => {
+    const results = [];
+    for (const url of urls) {
+      const response = await fetch(url);
+      const data = await response.json();
+      results.push(data.data);
+
+      await new Promise((resolve) => setTimeout(resolve, delay)); // Add delay between calls
+    }
+
+    return results;
+  };
 
   useEffect(() => {
-    const fetchTrendingAnime = async () => {
+    const fetchData = async () => {
+      setLoading(true);
+      const urls = [
+        "https://api.jikan.moe/v4/top/anime?filter=favorite&sfw=true&limit=10&page=3", //Featued Slider
+        "https://api.jikan.moe/v4/top/anime?filter=bypopularity&sfw=true&limit=16&page=2", //Trending Anime
+        "https://api.jikan.moe/v4/top/anime?filter=airing&sfw=true&limit=5", //Top Airing
+        "https://api.jikan.moe/v4/top/anime?filter=bypopularity&sfw=true&limit=5", //Most Popular
+        "https://api.jikan.moe/v4/top/anime?filter=favorite&sfw=true&limit=5", //Most Favorite
+        "https://api.jikan.moe/v4/seasons/now?sfw&limit=5", //Latest Episodes
+        "https://api.jikan.moe/v4/genres/anime?filter=genres", //Genres List
+      ];
+
       try {
-        const res = await fetch(
-          `https://api.jikan.moe/v4/top/anime?filter=bypopularity&sfw=true&limit=16&page=2`
-        );
-        const data = await res.json();
-        setTrendingAnimeList(data.data);
+        const [
+          featuredSliderListData,
+          trendingAnimeListData,
+          airingAnimeListData,
+          mostPopularAnimeListData,
+          mostFavoriteAnimeListData,
+          recentEpisodesListData,
+          genresListData,
+        ] = await fetchWithDelay(urls, 400);
+
+        setFeaturedSliderList(featuredSliderListData);
+        setTrendingAnimeList(trendingAnimeListData);
+        setAiringAnimeList(airingAnimeListData);
+        setMostPopularAnimeList(mostPopularAnimeListData);
+        setMostFavoriteAnimeList(mostFavoriteAnimeListData);
+        setRecentEpisodesList(recentEpisodesListData);
+        setGenresList(genresListData);
       } catch (err) {
-        console.error(err);
+        console.log(err);
+      } finally {
+        setLoading(false);
       }
     };
-
-    fetchTrendingAnime();
+    fetchData();
   }, []);
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <>
-      <FeaturedSlider />
+      <FeaturedSlider data={featuredSliderList} />
       <main>
-        <section className="container trending-anime-container">
-          <PrimaryHeading>Trending</PrimaryHeading>
-
-          <div className="trending-anime">
-            <Swiper
-              slidesPerView={2.25}
-              spaceBetween={10}
-              breakpoints={{
-                640: {
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-                768: {
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-                992: {
-                  slidesPerView: 5,
-                  spaceBetween: 20,
-                },
-                1200: {
-                  slidesPerView: 5,
-                  spaceBetween: 40,
-                },
-                1440: {
-                  slidesPerView: 6,
-                  spaceBetween: 40,
-                },
-              }}
-              modules={[Navigation]}
-              navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
-              }}
-              onBeforeInit={(swiper) => {
-                swiper.params.navigation.prevEl = prevRef.current;
-                swiper.params.navigation.nextEl = nextRef.current;
-              }}
-              className="trending-swiper"
-            >
-              {trendingAnimeList.map((anime, i) => {
-                {
-                  return (
-                    <SwiperSlide>
-                      <AnimeItemBig key={i} data={anime} rank={i + 1} />
-                    </SwiperSlide>
-                  );
-                }
-              })}
-            </Swiper>
-
-            <div className="swiper-buttons">
-              <button className="swiper-next" ref={nextRef}>
-                <FontAwesomeIcon
-                  icon={faChevronRight}
-                  style={{ fontSize: "20px" }}
-                />
-              </button>
-              <button className="swiper-prev" ref={prevRef}>
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  style={{ fontSize: "20px" }}
-                />
-              </button>
-            </div>
-          </div>
-        </section>
+        <TrendingAnimeSection data={trendingAnimeList} />
 
         <ShareSection />
 
-        <section className="contaier featured-anime"></section>
+        <section className="container featured-anime-section">
+          <div className="featured-column">
+            <PrimaryHeading>Top Airing</PrimaryHeading>
+            <ul className="column-list">
+              {airingAnimeList.map((anime, i) => {
+                return (
+                  <li key={i}>
+                    <AnimeItemList data={anime} />
+                  </li>
+                );
+              })}
+
+              <li>
+                <Link to={"top-airing"}>
+                  View More <FontAwesomeIcon icon={faChevronRight} />
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="featured-column">
+            <PrimaryHeading>Most Popular</PrimaryHeading>
+            <ul className="column-list">
+              {mostPopularAnimeList.map((anime, i) => {
+                return (
+                  <li key={i}>
+                    <AnimeItemList data={anime} />
+                  </li>
+                );
+              })}
+
+              <li>
+                <Link to={"top-airing"}>
+                  View More <FontAwesomeIcon icon={faChevronRight} />
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="featured-column">
+            <PrimaryHeading>Most Favorite</PrimaryHeading>
+            <ul className="column-list">
+              {mostFavoriteAnimeList.map((anime, i) => {
+                return (
+                  <li key={i}>
+                    <AnimeItemList data={anime} />
+                  </li>
+                );
+              })}
+
+              <li>
+                <Link to={"top-airing"}>
+                  View More <FontAwesomeIcon icon={faChevronRight} />
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="featured-column">
+            <PrimaryHeading>Recent Episodes</PrimaryHeading>
+            <ul className="column-list">
+              {recentEpisodesList.map((anime, i) => {
+                return (
+                  <li key={i}>
+                    <AnimeItemList data={anime} />
+                  </li>
+                );
+              })}
+
+              <li>
+                <Link to={"top-airing"}>
+                  View More <FontAwesomeIcon icon={faChevronRight} />
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </section>
       </main>
     </>
   );
