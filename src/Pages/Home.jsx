@@ -4,12 +4,10 @@ import FeaturedSlider from "../Components/FeaturedSlider";
 import PrimaryHeading from "../Components/PrimaryHeading";
 import Loader from "../Components/Loader";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-
 import ShareSection from "../Components/ShareSection";
-import AnimeItemList from "../Components/AnimeItemList";
-import { Link } from "react-router-dom";
+
+import Footer from "../Components/Footer";
+
 import TrendingAnimeSection from "../Components/TrendingAnimeSection";
 import UpcomingAnimeSection from "../Components/UpcomingAnimeSection";
 import FeaturedAnimeSection from "../Components/FeaturedAnimeSection";
@@ -101,6 +99,8 @@ export default function Home() {
 
         <UpcomingAnimeSection data={upcomingAnimeList} genres={genresList} />
       </main>
+
+      <Footer />
     </>
   );
 }

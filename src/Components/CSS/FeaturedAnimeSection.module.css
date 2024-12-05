@@ -7,11 +7,11 @@
     gap: 20px;
 }
 
+
 .FeaturedAnimeSection > div  h2 
 {
     font-size: 18px;
     font-weight: 500;
-    margin-block-end: 16px;
 }
 
 .FeaturedAnimeSection ul > li:not(:last-child)
@@ -45,4 +45,7 @@
     .FeaturedAnimeSection { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));}
 
     .FeaturedAnimeSection > div h2 { font-size: 16px;}
+
+    .FeaturedAnimeSection > div > div{ margin-block-end: 10px !important; } 
+
 }

@@ -1,0 +1,55 @@
+.footerContainer
+{
+    padding-block: 24px;
+    border-top: 1px solid #33334d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footerContainer img 
+{
+    width: 150px;
+}
+
+.footerText
+{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+}
+
+.footerText span 
+{
+    color: #fae065;
+    cursor: hear;
+}
+
+.socialIcons
+{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.socialIcons svg
+{
+    font-size: 24px;
+}
+
+@media (max-width: 576px) {
+
+    .footerText p {font-size: 14px;}
+    .footerContainer 
+    { 
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .footerText 
+    { 
+        align-items: center;
+        gap: 8px;
+    }
+}
