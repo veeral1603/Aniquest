@@ -22,6 +22,7 @@ export default function Home() {
   const [mostFavoriteAnimeList, setMostFavoriteAnimeList] = useState([]);
   const [recentEpisodesList, setRecentEpisodesList] = useState([]);
   const [upcomingAnimeList, setUpcomingAnimeList] = useState([]);
+  const [genresList, setGenresList] = useState([]);
 
   const CACHE_KEY = "animeDataCache";
 
@@ -51,7 +52,7 @@ export default function Home() {
     if (!cache) return null;
 
     const { data, timestamp } = JSON.parse(cache);
-    const cacheDuration = 1000 * 60 * 60 * 24 * 5; // Cache valid for 5 days
+    const cacheDuration = 1000 * 60 * 60; // Cache valid for 1 hour
 
     if (Date.now() - timestamp < cacheDuration) {
       return data;
@@ -68,8 +69,6 @@ export default function Home() {
 
       const cachedData = loadFromCache();
 
-      console.log(cachedData);
-
       if (cachedData) {
         // Use cached data
         setFeaturedSliderList(cachedData[0]);
@@ -79,9 +78,7 @@ export default function Home() {
         setMostFavoriteAnimeList(cachedData[4]);
         setRecentEpisodesList(cachedData[5]);
         setUpcomingAnimeList(cachedData[6]);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
+        setLoading(false);
         return;
       }
 
@@ -117,15 +114,17 @@ export default function Home() {
         setUpcomingAnimeList(upcomingAnimeListData);
 
         // Saving in cahce
-        saveToCache([
-          featuredSliderList,
-          trendingAnimeList,
-          airingAnimeList,
-          mostPopularAnimeList,
-          mostFavoriteAnimeList,
-          recentEpisodesList,
-          upcomingAnimeList,
-        ]);
+
+        const dataToSave = [
+          featuredSliderListData,
+          trendingAnimeListData,
+          airingAnimeListData,
+          mostPopularAnimeListData,
+          mostFavoriteAnimeListData,
+          recentEpisodesListData,
+          upcomingAnimeListData,
+        ];
+        saveToCache(dataToSave);
       } catch (err) {
         console.log(err);
       } finally {
