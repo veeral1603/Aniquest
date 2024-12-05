@@ -21,8 +21,10 @@ export default function Home() {
   const [mostPopularAnimeList, setMostPopularAnimeList] = useState([]);
   const [mostFavoriteAnimeList, setMostFavoriteAnimeList] = useState([]);
   const [recentEpisodesList, setRecentEpisodesList] = useState([]);
-  const [upcomingAnimeList, setUpcomingAnime] = useState([]);
+  const [upcomingAnimeList, setUpcomingAnimeList] = useState([]);
   const [genresList, setGenresList] = useState([]);
+
+  const CACHE_KEY = "animeDataCache";
 
   const fetchWithDelay = async (urls, delay) => {
     const results = [];
@@ -37,9 +39,53 @@ export default function Home() {
     return results;
   };
 
+  const saveToCache = (data) => {
+    const cache = {
+      data,
+      timestamp: Date.now(),
+    };
+    localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+  };
+
+  const loadFromCache = () => {
+    const cache = localStorage.getItem(CACHE_KEY);
+    if (!cache) return null;
+
+    const { data, timestamp } = JSON.parse(cache);
+    const cacheDuration = 1000 * 60 * 60 * 24 * 5; // Cache valid for 5 days
+
+    if (Date.now() - timestamp < cacheDuration) {
+      return data;
+    }
+
+    // Cache expired
+    localStorage.removeItem(CACHE_KEY);
+    return null;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+
+      const cachedData = loadFromCache();
+
+      if (cachedData) {
+        // Use cached data
+        setFeaturedSliderList(cachedData[0]);
+        setTrendingAnimeList(cachedData[1]);
+        setAiringAnimeList(cachedData[2]);
+        setMostPopularAnimeList(cachedData[3]);
+        setMostFavoriteAnimeList(cachedData[4]);
+        setRecentEpisodesList(cachedData[5]);
+        setUpcomingAnimeList(cachedData[6]);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+        return;
+      }
+
+      // Fetch fresh data
+
       const urls = [
         "https://api.jikan.moe/v4/top/anime?filter=favorite&sfw=true&limit=10&page=3", //Featued Slider
         "https://api.jikan.moe/v4/top/anime?filter=bypopularity&sfw=true&limit=16&page=2", //Trending Anime
@@ -48,7 +94,6 @@ export default function Home() {
         "https://api.jikan.moe/v4/top/anime?filter=favorite&sfw=true&limit=5", //Most Favorite
         "https://api.jikan.moe/v4/seasons/now?sfw&limit=5", //Latest Episodes
         "https://api.jikan.moe/v4/seasons/upcoming?sfw&limit=12", //Upcoming Anime
-        "https://api.jikan.moe/v4/genres/anime?filter=genres", //Genres List
       ];
 
       try {
@@ -60,7 +105,6 @@ export default function Home() {
           mostFavoriteAnimeListData,
           recentEpisodesListData,
           upcomingAnimeListData,
-          genresListData,
         ] = await fetchWithDelay(urls, 500);
 
         setFeaturedSliderList(featuredSliderListData);
@@ -69,8 +113,18 @@ export default function Home() {
         setMostPopularAnimeList(mostPopularAnimeListData);
         setMostFavoriteAnimeList(mostFavoriteAnimeListData);
         setRecentEpisodesList(recentEpisodesListData);
-        setUpcomingAnime(upcomingAnimeListData);
-        setGenresList(genresListData);
+        setUpcomingAnimeList(upcomingAnimeListData);
+
+        // Saving in cahce
+        saveToCache([
+          featuredSliderList,
+          trendingAnimeList,
+          airingAnimeList,
+          mostPopularAnimeList,
+          mostFavoriteAnimeList,
+          recentEpisodesList,
+          upcomingAnimeList,
+        ]);
       } catch (err) {
         console.log(err);
       } finally {
@@ -97,7 +151,7 @@ export default function Home() {
           recentEpisodesList={recentEpisodesList}
         />
 
-        <UpcomingAnimeSection data={upcomingAnimeList} genres={genresList} />
+        <UpcomingAnimeSection data={upcomingAnimeList} />
       </main>
 
       <Footer />
