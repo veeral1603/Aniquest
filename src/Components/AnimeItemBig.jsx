@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function AnimeItemBig({ data, rank }) {
   const {
     images: {
-      jpg: { large_image_url },
+      webp: { large_image_url },
     },
     title_english,
   } = data;

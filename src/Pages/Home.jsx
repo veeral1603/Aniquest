@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./CSS/Home.css";
 import FeaturedSlider from "../Components/FeaturedSlider";
-import PrimaryHeading from "../Components/PrimaryHeading";
 import Loader from "../Components/Loader";
 
 import ShareSection from "../Components/ShareSection";
@@ -22,7 +21,6 @@ export default function Home() {
   const [mostFavoriteAnimeList, setMostFavoriteAnimeList] = useState([]);
   const [recentEpisodesList, setRecentEpisodesList] = useState([]);
   const [upcomingAnimeList, setUpcomingAnimeList] = useState([]);
-  const [genresList, setGenresList] = useState([]);
 
   const CACHE_KEY = "animeDataCache";
 

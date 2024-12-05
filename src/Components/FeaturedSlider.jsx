@@ -45,7 +45,7 @@ export default function FeaturedSlider({ data }) {
               title_english,
               synopsis,
               images: {
-                jpg: { large_image_url },
+                webp: { large_image_url },
               },
               trailer: {
                 url,

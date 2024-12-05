@@ -7,7 +7,7 @@ import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 export default function AnimeItemList({ data }) {
   const {
     images: {
-      jpg: { large_image_url },
+      webp: { large_image_url },
     },
     title_english,
     type,
