@@ -78,7 +78,10 @@ export default function Home() {
         setMostFavoriteAnimeList(cachedData[4]);
         setRecentEpisodesList(cachedData[5]);
         setUpcomingAnimeList(cachedData[6]);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+
         return;
       }
 
