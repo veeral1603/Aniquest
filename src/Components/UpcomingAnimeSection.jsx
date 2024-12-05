@@ -5,6 +5,27 @@ import styles from "./CSS/UpcomingAnimeSection.module.css";
 import PrimaryHeading from "./PrimaryHeading";
 import { Link } from "react-router-dom";
 
+const genres = [
+  "Action",
+  "Adventure",
+  "Avant Garde",
+  "Award Winning",
+  "Boys Love",
+  "Comedy",
+  "Drama",
+  "Fantasy",
+  "Girls Love",
+  "Gourmet",
+  "Horror",
+  "Mystery",
+  "Romance",
+  "Sci-Fi",
+  "Slice of Life",
+  "Sports",
+  "Supernatural",
+  "Suspense",
+];
+
 const pastelColors = [
   "#FFB3BA", // Soft Red
   "#FFDFBA", // Soft Orange
@@ -23,7 +44,7 @@ const getRandomColor = () => {
   return pastelColors[randomIndex];
 };
 
-export default function UpcomingAnimeSection({ data, genres }) {
+export default function UpcomingAnimeSection({ data }) {
   return (
     <section className={`container ${styles.UpcomingAnimeSection}`}>
       <PrimaryHeading moreBtn={true}>Top Upcoming</PrimaryHeading>
@@ -47,11 +68,15 @@ export default function UpcomingAnimeSection({ data, genres }) {
 
           <div className={styles.GenresInnerContainer}>
             <ul className={styles.GenreList}>
-              {genres.map((genreArr, i) => {
+              {genres.map((genre, i) => {
                 {
                   return (
                     <li style={{ color: getRandomColor() }} key={i}>
-                      <Link to={`genre/${genreArr.name}`}>{genreArr.name}</Link>
+                      <Link
+                        to={`genre/${genre.split(" ").join("-").toLowerCase()}`}
+                      >
+                        {genre}
+                      </Link>
                     </li>
                   );
                 }

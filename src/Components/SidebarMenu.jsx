@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import styles from "./CSS/SidebarMenu.module.css";
 import ShareButton from "./ShareButton";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import PrimaryButton from "./PrimaryButton";
@@ -27,24 +27,29 @@ const getRandomColor = () => {
 const subMenuItems = [
   "Action",
   "Adventure",
-  "Cars",
+  "Avant Garde",
+  "Award Winning",
+  "Boys Love",
   "Comedy",
-  "Comedy",
-  "Comedy",
-  "Comedy",
-  "Comedy",
-  "Comedy",
-  "Comedy",
-  "Comedy",
-  "Comedy",
-  "Comedy",
-  "Comedy",
+  "Drama",
+  "Fantasy",
+  "Girls Love",
+  "Gourmet",
+  "Horror",
+  "Mystery",
+  "Romance",
+  "Sci-Fi",
+  "Slice of Life",
+  "Sports",
+  "Supernatural",
+  "Suspense",
 ];
 
 const sideNavLinks = [
   "Trending",
   "TV Shows",
   "Movies",
+  "Upcoming",
   "Subbed Anime",
   "Dubbed Anime",
   "OVA",
@@ -108,8 +113,13 @@ export function SidebarMenu({ toggleMobileMenu, isOpen }) {
                     style={{
                       color: getRandomColor(), // Apply random color to text
                     }}
+                    onClick={toggleMobileMenu}
                   >
-                    <a href={`/genre/${item}`}>{item}</a>
+                    <Link
+                      to={`/genre/${item.split(" ").join("-").toLowerCase()}`}
+                    >
+                      {item}
+                    </Link>
                   </li>
                 ))}
               </ul>
