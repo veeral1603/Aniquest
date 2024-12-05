@@ -22,7 +22,6 @@ export default function Home() {
   const [mostFavoriteAnimeList, setMostFavoriteAnimeList] = useState([]);
   const [recentEpisodesList, setRecentEpisodesList] = useState([]);
   const [upcomingAnimeList, setUpcomingAnimeList] = useState([]);
-  const [genresList, setGenresList] = useState([]);
 
   const CACHE_KEY = "animeDataCache";
 
@@ -68,6 +67,8 @@ export default function Home() {
       setLoading(true);
 
       const cachedData = loadFromCache();
+
+      console.log(cachedData);
 
       if (cachedData) {
         // Use cached data
