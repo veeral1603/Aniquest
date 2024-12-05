@@ -17,7 +17,7 @@ a
 body
 {
     background-color: #141420;
-    color: #e2e1e1;
+    color: #f0efef;
     font-family: "Noto Sans JP", sans-serif;
     width: 100%;
     height: 100vh;
@@ -87,6 +87,17 @@ nav a.active
 section 
 {
     margin-block-end: 20px;
+}
+
+section:last-child
+{
+    margin-block-end: 30px;
+}
+
+
+@media (max-width: 1440px)
+{
+    .container {padding-inline: 20px;}
 }
 
 

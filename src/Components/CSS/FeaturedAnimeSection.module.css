@@ -1,0 +1,48 @@
+/* Featured Anime  */
+
+.FeaturedAnimeSection
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(23%,1fr));
+    gap: 20px;
+}
+
+.FeaturedAnimeSection > div  h2 
+{
+    font-size: 18px;
+    font-weight: 500;
+    margin-block-end: 16px;
+}
+
+.FeaturedAnimeSection ul > li:not(:last-child)
+{
+    padding-block: 15px;
+    border-bottom: 1px solid rgb(41, 38, 54);
+}
+
+.FeaturedAnimeSection ul  > li:last-child
+{
+    padding-block: 15px;
+    font-weight: 300;
+
+    &:hover {
+        color: #fae065;
+    }
+}
+
+@media (max-width: 1200px)
+{
+    .FeaturedAnimeSection { grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); }
+}
+
+
+
+@media (max-width: 768px) 
+{
+
+    .FeaturedAnimeSection ul  > li:last-child:hover { color: inherit;}
+
+    .FeaturedAnimeSection { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));}
+
+    .FeaturedAnimeSection > div h2 { font-size: 16px;}
+}

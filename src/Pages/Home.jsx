@@ -11,6 +11,8 @@ import ShareSection from "../Components/ShareSection";
 import AnimeItemList from "../Components/AnimeItemList";
 import { Link } from "react-router-dom";
 import TrendingAnimeSection from "../Components/TrendingAnimeSection";
+import UpcomingAnimeSection from "../Components/UpcomingAnimeSection";
+import FeaturedAnimeSection from "../Components/FeaturedAnimeSection";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -21,6 +23,7 @@ export default function Home() {
   const [mostPopularAnimeList, setMostPopularAnimeList] = useState([]);
   const [mostFavoriteAnimeList, setMostFavoriteAnimeList] = useState([]);
   const [recentEpisodesList, setRecentEpisodesList] = useState([]);
+  const [upcomingAnimeList, setUpcomingAnime] = useState([]);
   const [genresList, setGenresList] = useState([]);
 
   const fetchWithDelay = async (urls, delay) => {
@@ -46,6 +49,7 @@ export default function Home() {
         "https://api.jikan.moe/v4/top/anime?filter=bypopularity&sfw=true&limit=5", //Most Popular
         "https://api.jikan.moe/v4/top/anime?filter=favorite&sfw=true&limit=5", //Most Favorite
         "https://api.jikan.moe/v4/seasons/now?sfw&limit=5", //Latest Episodes
+        "https://api.jikan.moe/v4/seasons/upcoming?sfw&limit=12", //Upcoming Anime
         "https://api.jikan.moe/v4/genres/anime?filter=genres", //Genres List
       ];
 
@@ -57,8 +61,9 @@ export default function Home() {
           mostPopularAnimeListData,
           mostFavoriteAnimeListData,
           recentEpisodesListData,
+          upcomingAnimeListData,
           genresListData,
-        ] = await fetchWithDelay(urls, 400);
+        ] = await fetchWithDelay(urls, 500);
 
         setFeaturedSliderList(featuredSliderListData);
         setTrendingAnimeList(trendingAnimeListData);
@@ -66,6 +71,7 @@ export default function Home() {
         setMostPopularAnimeList(mostPopularAnimeListData);
         setMostFavoriteAnimeList(mostFavoriteAnimeListData);
         setRecentEpisodesList(recentEpisodesListData);
+        setUpcomingAnime(upcomingAnimeListData);
         setGenresList(genresListData);
       } catch (err) {
         console.log(err);
@@ -86,83 +92,14 @@ export default function Home() {
 
         <ShareSection />
 
-        <section className="container featured-anime-section">
-          <div className="featured-column">
-            <PrimaryHeading>Top Airing</PrimaryHeading>
-            <ul className="column-list">
-              {airingAnimeList.map((anime, i) => {
-                return (
-                  <li key={i}>
-                    <AnimeItemList data={anime} />
-                  </li>
-                );
-              })}
+        <FeaturedAnimeSection
+          airingAnimeList={airingAnimeList}
+          mostFavoriteAnimeList={mostFavoriteAnimeList}
+          mostPopularAnimeList={mostPopularAnimeList}
+          recentEpisodesList={recentEpisodesList}
+        />
 
-              <li>
-                <Link to={"top-airing"}>
-                  View More <FontAwesomeIcon icon={faChevronRight} />
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="featured-column">
-            <PrimaryHeading>Most Popular</PrimaryHeading>
-            <ul className="column-list">
-              {mostPopularAnimeList.map((anime, i) => {
-                return (
-                  <li key={i}>
-                    <AnimeItemList data={anime} />
-                  </li>
-                );
-              })}
-
-              <li>
-                <Link to={"top-airing"}>
-                  View More <FontAwesomeIcon icon={faChevronRight} />
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="featured-column">
-            <PrimaryHeading>Most Favorite</PrimaryHeading>
-            <ul className="column-list">
-              {mostFavoriteAnimeList.map((anime, i) => {
-                return (
-                  <li key={i}>
-                    <AnimeItemList data={anime} />
-                  </li>
-                );
-              })}
-
-              <li>
-                <Link to={"top-airing"}>
-                  View More <FontAwesomeIcon icon={faChevronRight} />
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="featured-column">
-            <PrimaryHeading>Recent Episodes</PrimaryHeading>
-            <ul className="column-list">
-              {recentEpisodesList.map((anime, i) => {
-                return (
-                  <li key={i}>
-                    <AnimeItemList data={anime} />
-                  </li>
-                );
-              })}
-
-              <li>
-                <Link to={"top-airing"}>
-                  View More <FontAwesomeIcon icon={faChevronRight} />
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </section>
+        <UpcomingAnimeSection data={upcomingAnimeList} genres={genresList} />
       </main>
     </>
   );

@@ -22,10 +22,11 @@ export default function TrendingAnimeSection({ data }) {
 
   return (
     <section className="container trending-anime-section">
-      <PrimaryHeading>Trending</PrimaryHeading>
+      <PrimaryHeading moreBtn={true}>Trending</PrimaryHeading>
 
       <div className={styles.TrendingAnime}>
         <Swiper
+          modules={[Navigation]}
           slidesPerView={2.25}
           spaceBetween={10}
           breakpoints={{
@@ -50,7 +51,6 @@ export default function TrendingAnimeSection({ data }) {
               spaceBetween: 40,
             },
           }}
-          modules={[Navigation]}
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,

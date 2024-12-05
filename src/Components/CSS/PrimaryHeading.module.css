@@ -1,12 +1,23 @@
 .PrimaryHeadingContainer
 {
     margin-block: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .PrimaryHeading
 {
     color: #fae065;
     font-size: 22px;
+}
+
+.viewMoreBtn
+{
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    color: rgb(168, 168, 168);
 }
 
 @media (max-width: 768px){
