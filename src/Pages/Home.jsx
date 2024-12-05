@@ -67,7 +67,7 @@ export default function Home() {
 
       const cachedData = loadFromCache();
 
-      if (cachedData) {
+      if (cachedData && cachedData[0].length > 0) {
         // Use cached data
         setFeaturedSliderList(cachedData[0]);
         setTrendingAnimeList(cachedData[1]);
