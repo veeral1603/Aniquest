@@ -17,7 +17,11 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="trending" element={<Trending />} />
           <Route path="tv-shows" element={<TvShows />} />
+          <Route path="tv-shows/page=:page" element={<TvShows />} />
+
           <Route path="movies" element={<Movies />} />
+          <Route path="movies/page=:page" element={<Movies />} />
+
           <Route path="watch-list" element={<WatchList />} />
           <Route path="anime" element={<Anime />} />
           <Route path="*" element={<PageNotFound />} />

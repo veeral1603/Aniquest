@@ -46,7 +46,14 @@
     gap: 8px;
 }
 
-.Title { font-size: 16px;}
+.Title 
+{ 
+    font-size: 16px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
 
 .TitleContainer p:first-child
 {

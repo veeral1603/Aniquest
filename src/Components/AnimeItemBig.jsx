@@ -9,6 +9,7 @@ export default function AnimeItemBig({ data, rank }) {
       webp: { large_image_url },
     },
     title_english,
+    title,
   } = data;
 
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function AnimeItemBig({ data, rank }) {
       </div>
       <div className={styles.TitleContainer}>
         <p>{String(rank).length == 1 ? `0${rank}` : rank}</p>
-        <p className={styles.Title}>{title_english.slice(0, 15) + "..."}</p>
+        <p className={styles.Title}>{title_english ? title_english : title}</p>
       </div>
     </div>
   );

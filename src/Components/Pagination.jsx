@@ -2,12 +2,8 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./CSS/Pagination.module.css";
-import {
-  faAnglesLeft,
-  faAnglesRight,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAnglesLeft, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function Pagination({
   pagination,
@@ -15,27 +11,18 @@ export default function Pagination({
   setCurrentPage,
   setLoading,
 }) {
-  const nextPage = function () {
-    if (currentPage == pagination.last_visible_page) return;
-
-    setCurrentPage(currentPage + 1);
-    setLoading(true);
-  };
-
-  const prevPage = function () {
-    if (currentPage == 1) return;
-    setCurrentPage(currentPage - 1);
-    setLoading(true);
-  };
+  const navigate = useNavigate();
 
   const goToLastPage = function () {
     setCurrentPage(pagination.last_visible_page);
     setLoading(true);
+    navigate(`?page=${pagination.last_visible_page}`);
   };
 
   const goToFirstPage = function () {
     setCurrentPage(1);
     setLoading(true);
+    navigate(`?page=${1}`);
   };
 
   return (
@@ -53,6 +40,7 @@ export default function Pagination({
           <>
             <button
               onClick={() => {
+                navigate(`?page=${currentPage - 2}`);
                 setCurrentPage((cur) => cur - 2);
                 setLoading(true);
               }}
@@ -66,6 +54,7 @@ export default function Pagination({
           <>
             <button
               onClick={() => {
+                navigate(`?page=${currentPage - 1}`);
                 setCurrentPage((cur) => cur - 1);
                 setLoading(true);
               }}
@@ -81,6 +70,7 @@ export default function Pagination({
           <>
             <button
               onClick={() => {
+                navigate(`?page=${currentPage + 1}`);
                 setCurrentPage((cur) => cur + 1);
                 setLoading(true);
               }}
@@ -90,6 +80,7 @@ export default function Pagination({
 
             <button
               onClick={() => {
+                navigate(`?page=${currentPage + 2}`);
                 setCurrentPage((cur) => cur + 2);
                 setLoading(true);
               }}

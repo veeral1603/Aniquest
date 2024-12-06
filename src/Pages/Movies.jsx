@@ -3,10 +3,14 @@ import ResultsSection from "../Components/ResultsSection";
 import ShareSection from "../Components/ShareSection";
 import Loader from "../Components/Loader";
 import Footer from "../Components/Footer";
+import { useSearchParams } from "react-router-dom";
 
 export default function Movies() {
+  const [pageParam, setPageParam] = useSearchParams();
+  const page = pageParam.get("page");
+
   const [moveisList, setMoviesList] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(page ? +page : 1);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,6 +20,7 @@ export default function Movies() {
         const res = await fetch(
           `https://api.jikan.moe/v4/top/anime?sfw=true&type=movie&limit=24&filter=bypopularity&page=${currentPage}`
         );
+
         const data = await res.json();
 
         setMoviesList(data.data);
