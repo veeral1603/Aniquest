@@ -3,6 +3,11 @@
     cursor: pointer;
 }
 
+.AnimeItem:hover .Title
+{
+    color: #fae065;
+}
+
 .CoverContainer
 {
     overflow: hidden;
@@ -54,4 +59,9 @@
     border-radius: 50%;
     display: inline-block;
     margin-inline: 6px;
+}
+
+@media (max-width: 768px)
+{
+    .AnimeItem:hover .Title { color: inherit;}
 }

@@ -10,6 +10,7 @@ export default function AnimeItemSmall({ data, animeType = "s" }) {
     images: {
       webp: { large_image_url },
     },
+    title,
     title_english,
     episodes,
     type,
@@ -25,7 +26,7 @@ export default function AnimeItemSmall({ data, animeType = "s" }) {
       </div>
       <div className={styles.TitleContainer}>
         <h3 className={styles.Title}>
-          {title_english ? title_english : "UnNamed"}
+          {title_english ? title_english : title}
         </h3>
 
         <p className={styles.Info}>

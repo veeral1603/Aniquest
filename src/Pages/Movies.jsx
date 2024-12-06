@@ -6,18 +6,20 @@ import Footer from "../Components/Footer";
 
 export default function Movies() {
   const [moveisList, setMoviesList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
         const res = await fetch(
-          `https://api.jikan.moe/v4/top/anime?sfw=true&type=movie&limit=24&filter=bypopularity`
+          `https://api.jikan.moe/v4/top/anime?sfw=true&type=movie&limit=24&filter=bypopularity&page=${currentPage}`
         );
         const data = await res.json();
 
         setMoviesList(data.data);
+        setPagination(data.pagination);
       } catch (err) {
         console.log(err);
       } finally {
@@ -26,7 +28,7 @@ export default function Movies() {
     };
 
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   return loading ? (
     <Loader />
@@ -35,7 +37,14 @@ export default function Movies() {
       <div className="content-wrapper">
         <ShareSection />
 
-        <ResultsSection pageTitle={"Movie Anime"} data={moveisList} />
+        <ResultsSection
+          pageTitle={"Movie Anime"}
+          data={moveisList}
+          pagination={pagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          setLoading={setLoading}
+        />
       </div>
 
       <Footer />
