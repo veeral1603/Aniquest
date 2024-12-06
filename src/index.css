@@ -98,19 +98,33 @@ section:last-child
 @media (max-width: 1440px)
 {
     .container {padding-inline: 20px;}
+
+
 }
 
 
 @media (max-width: 1200px)
 {
     .container {padding-inline: 16px;}
+
+    .content-wrapper { padding-block-start: 76px;}
 }
 
 @media (max-width: 992px)
 {
     .container {padding-inline: 14px;}
+
+    .content-wrapper { padding-block-start: 70px;}
 }
 @media (max-width: 768px)
 {
     .container {padding-inline: 12px;}
+
+    .content-wrapper { padding-block-start: 0px;}
+}
+@media (max-width: 568px)
+{
+    .container {padding-inline: 12px;}
+
+    
 }

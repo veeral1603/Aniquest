@@ -1,0 +1,44 @@
+.GenresContainer
+{
+    background-color:  rgba(255, 253, 253, 0.116);
+    padding: 1rem;
+}
+
+
+
+.GenreList
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+.GenreList > li 
+{
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-inline: 4px;
+    margin-block: 10px 10px;
+    transition: background-color .1s ease;
+
+    &:hover {
+        background-color:  rgba(255, 253, 253, 0.164);
+    }
+}
+
+.GenreList li a
+{
+    padding:  10px;
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+
+@media (max-width: 1440px) {
+
+
+    .GenreList { grid-template-columns: repeat(2,  1fr);}
+}

@@ -16,8 +16,8 @@
 
 .GifContainer
 {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
 }
 
 .GifContainer img 
@@ -29,7 +29,13 @@
 
 .ShareText h3 
 {
-    color: #fae065
+    color: #fae065;
+    font-size: 16px;
+}
+
+.ShareText p
+{
+    font-size: 14px;
 }
 
 @media (max-width: 768px) {

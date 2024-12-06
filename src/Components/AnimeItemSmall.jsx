@@ -5,7 +5,7 @@ import styles from "./CSS/AnimeItemSmall.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 
-export default function AnimeItemSmall({ data }) {
+export default function AnimeItemSmall({ data, animeType = "s" }) {
   const {
     images: {
       webp: { large_image_url },
@@ -13,6 +13,7 @@ export default function AnimeItemSmall({ data }) {
     title_english,
     episodes,
     type,
+    duration,
   } = data;
 
   const navigate = useNavigate();
@@ -23,16 +24,27 @@ export default function AnimeItemSmall({ data }) {
         <img src={large_image_url} loading="lazy" />
       </div>
       <div className={styles.TitleContainer}>
-        <p className={styles.Title}>
-          {title_english ? title_english.slice(0, 15) + "..." : "UnNamed"}
-        </p>
+        <h3 className={styles.Title}>
+          {title_english ? title_english : "UnNamed"}
+        </h3>
 
         <p className={styles.Info}>
-          <span className={styles.Tag}>
-            <FontAwesomeIcon icon={faCirclePlay} /> {episodes ? episodes : "?"}
-          </span>
-          <span className={styles.dot}></span>
+          {animeType == "s" && (
+            <>
+              <span className={styles.Tag}>
+                <FontAwesomeIcon icon={faCirclePlay} />{" "}
+                {episodes ? episodes : "? eps"}
+              </span>
+              <span className={styles.dot}></span>
+            </>
+          )}
           {type ? type : " ?"}
+          {animeType == "m" && (
+            <>
+              <span className={styles.dot}></span>
+              {duration ? `${duration}` : "?m"}
+            </>
+          )}
         </p>
       </div>
     </div>

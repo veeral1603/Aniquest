@@ -13,65 +13,12 @@
     gap: 15px;
 }
 
-.GenresInnerContainer
-{
-    background-color:  rgba(255, 253, 253, 0.116);
-    padding: 1rem;
-}
-
-
-.adArea
-{
-    width: 100%;
-    aspect-ratio: 2/1;
-    background-color: transparent;
-    
-    background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
-    border-radius: 12px;
-    display: grid;
-    color: #333;
-    place-items: center;
-    text-align: center;
-    margin-block-end: 30px;
-}
-
-.GenreList
-{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.GenreList > li 
-{
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-inline: 5px;
-    margin-block: 0 14px;
-    transition: background-color .1s ease;
-
-    &:hover {
-        background-color:  rgba(255, 253, 253, 0.164);
-    }
-}
-
-.GenreList li a
-{
-    padding:  10px;
-    display: block;
-    max-width: 100%;
-    overflow: hidden;
-}
-
 
 @media (max-width: 1440px) {
 
     .AnimeContainer { grid-template-columns: repeat(4, 1fr);}
 
-    .GenreList { grid-template-columns: repeat(2,  1fr);}
 }
-
 
 
 @media (max-width: 1200px) {
@@ -89,7 +36,6 @@
 @media (max-width: 992px) {
 
     
-
     
 }
 
