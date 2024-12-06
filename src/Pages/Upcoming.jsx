@@ -3,9 +3,9 @@ import ResultsSection from "../Components/ResultsSection";
 import ShareSection from "../Components/ShareSection";
 import Loader from "../Components/Loader";
 import Footer from "../Components/Footer";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
-export default function Movies() {
+export default function Upcoming() {
   const [pageParam, setPageParam] = useSearchParams();
   const page = pageParam.get("page");
 
@@ -14,20 +14,14 @@ export default function Movies() {
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://api.jikan.moe/v4/top/anime?sfw=true&type=movie&limit=24&filter=bypopularity&page=${currentPage}`
+          `https://api.jikan.moe/v4/top/anime?sfw=true&limit=24&filter=upcoming&page=${currentPage}`
         );
 
         const data = await res.json();
-
-        if (data.data.length == 0) {
-          navigate("/page-not-found");
-        }
 
         setMoviesList(data.data);
         setPagination(data.pagination);
@@ -49,7 +43,7 @@ export default function Movies() {
         <ShareSection />
 
         <ResultsSection
-          pageTitle={"Movie Anime"}
+          pageTitle={"Trending Anime"}
           data={moveisList}
           pagination={pagination}
           currentPage={currentPage}

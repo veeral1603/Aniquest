@@ -22,7 +22,9 @@ export default function TrendingAnimeSection({ data }) {
 
   return (
     <section className="container trending-anime-section">
-      <PrimaryHeading moreBtn={true}>Trending</PrimaryHeading>
+      <PrimaryHeading moreBtn={true} btnLink={`trending`}>
+        Trending
+      </PrimaryHeading>
 
       <div className={styles.TrendingAnime}>
         <Swiper

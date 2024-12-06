@@ -7,6 +7,9 @@ import PageNotFound from "./Pages/PageNotFound";
 import WatchList from "./Pages/WatchList";
 import Navbar from "./Components/Navbar";
 import Anime from "./Pages/Anime";
+import Ova from "./Pages/ova";
+import Ona from "./Pages/Ona";
+import Upcoming from "./Pages/Upcoming";
 
 export default function App() {
   return (
@@ -24,6 +27,9 @@ export default function App() {
 
           <Route path="watch-list" element={<WatchList />} />
           <Route path="anime" element={<Anime />} />
+          <Route path="ova" element={<Ova />} />
+          <Route path="ona" element={<Ona />} />
+          <Route path="upcoming" element={<Upcoming />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

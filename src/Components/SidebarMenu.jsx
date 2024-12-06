@@ -50,8 +50,6 @@ const sideNavLinks = [
   "TV Shows",
   "Movies",
   "Upcoming",
-  "Subbed Anime",
-  "Dubbed Anime",
   "OVA",
   "ONA",
 ];

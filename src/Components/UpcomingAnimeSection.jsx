@@ -9,7 +9,9 @@ import GenresContainer from "./GenresContainer";
 export default function UpcomingAnimeSection({ data }) {
   return (
     <section className={`container ${styles.UpcomingAnimeSection}`}>
-      <PrimaryHeading moreBtn={true}>Top Upcoming</PrimaryHeading>
+      <PrimaryHeading moreBtn={true} btnLink={`upcoming`}>
+        Upcoming Anime
+      </PrimaryHeading>
       <div className={styles.ContentContainer}>
         <div className={styles.AnimeContainer}>
           {data.map((anime, i) => {
