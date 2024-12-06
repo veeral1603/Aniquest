@@ -15,6 +15,7 @@ export default function AnimeItemSmall({ data, animeType = "s" }) {
     episodes,
     type,
     duration,
+    rating,
   } = data;
 
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ export default function AnimeItemSmall({ data, animeType = "s" }) {
     <div className={styles.AnimeItem} onClick={() => navigate("/anime")}>
       <div className={styles.CoverContainer}>
         <img src={large_image_url} loading="lazy" />
+        <div className={styles.ratingTag}>{rating.split(" ")[0]}</div>
       </div>
       <div className={styles.TitleContainer}>
         <h3 className={styles.Title}>

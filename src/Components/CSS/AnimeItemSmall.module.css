@@ -1,6 +1,7 @@
 .AnimeItem
 {
     cursor: pointer;
+    position: relative;
 }
 
 .AnimeItem:hover .Title
@@ -12,6 +13,7 @@
 {
     overflow: hidden;
     object-fit: contain;
+    position: relative;
 }
 
 .CoverContainer img
@@ -21,6 +23,19 @@
     aspect-ratio: 2/3;
 }
 
+.CoverContainer div
+{
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    background-color: #fda3ac;
+    padding: 2px 8px;
+    display: block;
+    border-radius: 8px;
+    color: black;
+    font-weight: 600;
+    font-size: 12px;
+}
 
 .TitleContainer
 {
