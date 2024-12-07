@@ -7,7 +7,7 @@ import PageNotFound from "./Pages/PageNotFound";
 import WatchList from "./Pages/WatchList";
 import Navbar from "./Components/Navbar";
 import Anime from "./Pages/Anime";
-import Ova from "./Pages/ova";
+import Ova from "./Pages/Ova";
 import Ona from "./Pages/Ona";
 import Upcoming from "./Pages/Upcoming";
 
