@@ -3,24 +3,24 @@ import styles from "./CSS/GenresContainer.module.css";
 
 export default function GenresContainer() {
   const genres = [
-    "Action",
-    "Adventure",
-    "Avant Garde",
-    "Award Winning",
-    "Boys Love",
-    "Comedy",
-    "Drama",
-    "Fantasy",
-    "Girls Love",
-    "Gourmet",
-    "Horror",
-    "Mystery",
-    "Romance",
-    "Sci-Fi",
-    "Slice of Life",
-    "Sports",
-    "Supernatural",
-    "Suspense",
+    { name: "Action", id: 1 },
+    { name: "Adventure", id: 2 },
+    { name: "Avant Garde", id: 5 },
+    { name: "Award Winning", id: 46 },
+    { name: "Boys Love", id: 28 },
+    { name: "Comedy", id: 4 },
+    { name: "Drama", id: 8 },
+    { name: "Fantasy", id: 10 },
+    { name: "Girls Love", id: 26 },
+    { name: "Gourmet", id: 47 },
+    { name: "Horror", id: 14 },
+    { name: "Mystery", id: 7 },
+    { name: "Romance", id: 22 },
+    { name: "Sci-Fi", id: 24 },
+    { name: "Slice of Life", id: 36 },
+    { name: "Sports", id: 30 },
+    { name: "Supernatural", id: 37 },
+    { name: "Suspense", id: 41 },
   ];
 
   const pastelColors = [
@@ -48,8 +48,13 @@ export default function GenresContainer() {
           {
             return (
               <li style={{ color: getRandomColor() }} key={i}>
-                <Link to={`genre/${genre.split(" ").join("-").toLowerCase()}`}>
-                  {genre}
+                <Link
+                  to={`/genre/${genre.name
+                    .split(" ")
+                    .join("-")
+                    .toLowerCase()}/${genre.id}?page=1`}
+                >
+                  {genre.name}
                 </Link>
               </li>
             );

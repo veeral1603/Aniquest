@@ -10,6 +10,7 @@ import Anime from "./Pages/Anime";
 import Ova from "./Pages/Ova";
 import Ona from "./Pages/Ona";
 import Upcoming from "./Pages/Upcoming";
+import Genre from "./Pages/Genre";
 
 export default function App() {
   return (
@@ -28,6 +29,9 @@ export default function App() {
           <Route path="ova" element={<Ova />} />
           <Route path="ona" element={<Ona />} />
           <Route path="upcoming" element={<Upcoming />} />
+
+          <Route path="genre" element={<Genre />} />
+          <Route path="genre/:genre/:genreid" element={<Genre />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
