@@ -43,7 +43,7 @@ export default function Upcoming() {
         <ShareSection />
 
         <ResultsSection
-          pageTitle={"Trending Anime"}
+          pageTitle={"Upcoming Anime"}
           data={moveisList}
           pagination={pagination}
           currentPage={currentPage}
