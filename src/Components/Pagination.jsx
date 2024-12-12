@@ -13,16 +13,24 @@ export default function Pagination({
 }) {
   const navigate = useNavigate();
 
+  const getUpdatedQuery = (pageNumber) => {
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set("page", pageNumber); // Update the page parameter
+    return `?${searchParams.toString()}`;
+  };
+
   const goToLastPage = function () {
+    const updatedQuery = getUpdatedQuery(pagination.last_visible_page);
     setCurrentPage(pagination.last_visible_page);
     setLoading(true);
-    navigate(`?page=${pagination.last_visible_page}`);
+    navigate(updatedQuery);
   };
 
   const goToFirstPage = function () {
+    const updatedQuery = getUpdatedQuery(1);
     setCurrentPage(1);
     setLoading(true);
-    navigate(`?page=${1}`);
+    navigate(updatedQuery);
   };
 
   return (
@@ -40,7 +48,8 @@ export default function Pagination({
           <>
             <button
               onClick={() => {
-                navigate(`?page=${currentPage - 2}`);
+                const updatedQuery = getUpdatedQuery(currentPage - 2);
+                navigate(updatedQuery);
                 setCurrentPage((cur) => cur - 2);
                 setLoading(true);
               }}
@@ -54,7 +63,8 @@ export default function Pagination({
           <>
             <button
               onClick={() => {
-                navigate(`?page=${currentPage - 1}`);
+                const updatedQuery = getUpdatedQuery(currentPage - 1);
+                navigate(updatedQuery);
                 setCurrentPage((cur) => cur - 1);
                 setLoading(true);
               }}
@@ -70,7 +80,8 @@ export default function Pagination({
           <>
             <button
               onClick={() => {
-                navigate(`?page=${currentPage + 1}`);
+                const updatedQuery = getUpdatedQuery(currentPage + 1);
+                navigate(updatedQuery);
                 setCurrentPage((cur) => cur + 1);
                 setLoading(true);
               }}
@@ -78,15 +89,18 @@ export default function Pagination({
               {currentPage + 1}
             </button>
 
-            <button
-              onClick={() => {
-                navigate(`?page=${currentPage + 2}`);
-                setCurrentPage((cur) => cur + 2);
-                setLoading(true);
-              }}
-            >
-              {currentPage + 2}
-            </button>
+            {pagination.last_visible_page - currentPage > 1 && (
+              <button
+                onClick={() => {
+                  const updatedQuery = getUpdatedQuery(currentPage + 2);
+                  navigate(updatedQuery);
+                  setCurrentPage((cur) => cur + 2);
+                  setLoading(true);
+                }}
+              >
+                {currentPage + 2}
+              </button>
+            )}
 
             <button onClick={goToLastPage}>
               <FontAwesomeIcon icon={faAnglesRight} />

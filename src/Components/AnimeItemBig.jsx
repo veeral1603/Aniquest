@@ -10,12 +10,24 @@ export default function AnimeItemBig({ data, rank }) {
     },
     title_english,
     title,
+    mal_id,
   } = data;
 
   const navigate = useNavigate();
 
   return (
-    <div className={styles.AnimeItem} onClick={() => navigate("/anime")}>
+    <div
+      className={styles.AnimeItem}
+      onClick={() =>
+        navigate(
+          `/anime/${
+            title_english
+              ? title_english.split(" ").join("-")
+              : title.split(" ").join("-")
+          }-${mal_id}`
+        )
+      }
+    >
       <div className={styles.CoverContainer}>
         <img src={large_image_url} />
         <span>{String(rank).length == 1 ? `0${rank}` : rank}</span>

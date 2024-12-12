@@ -14,7 +14,7 @@
 
 @media (max-width: 576px)
 {
-    nav .primaryButton
+    nav  :global .watchListBtn
     {
         display: none;
     }

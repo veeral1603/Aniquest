@@ -39,7 +39,7 @@ export default function Movies() {
     };
 
     fetchData();
-  }, [currentPage]);
+  }, [currentPage, navigate]);
 
   return loading ? (
     <Loader />

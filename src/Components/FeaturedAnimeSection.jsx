@@ -20,11 +20,7 @@ export default function FeaturedAnimeSection({
         <PrimaryHeading>Top Airing</PrimaryHeading>
         <ul className="column-list">
           {airingAnimeList.map((anime, i) => {
-            return (
-              <li key={i}>
-                <AnimeItemList data={anime} />
-              </li>
-            );
+            return <AnimeItemList data={anime} key={i} />;
           })}
 
           <li>
@@ -39,11 +35,7 @@ export default function FeaturedAnimeSection({
         <PrimaryHeading>Most Popular</PrimaryHeading>
         <ul className="column-list">
           {mostPopularAnimeList.map((anime, i) => {
-            return (
-              <li key={i}>
-                <AnimeItemList data={anime} />
-              </li>
-            );
+            return <AnimeItemList data={anime} key={i} />;
           })}
 
           <li>
@@ -58,11 +50,7 @@ export default function FeaturedAnimeSection({
         <PrimaryHeading>Most Favorite</PrimaryHeading>
         <ul className="column-list">
           {mostFavoriteAnimeList.map((anime, i) => {
-            return (
-              <li key={i}>
-                <AnimeItemList data={anime} />
-              </li>
-            );
+            return <AnimeItemList data={anime} key={i} />;
           })}
 
           <li>
@@ -77,11 +65,7 @@ export default function FeaturedAnimeSection({
         <PrimaryHeading>Recent Episodes</PrimaryHeading>
         <ul className="column-list">
           {recentEpisodesList.map((anime, i) => {
-            return (
-              <li key={i}>
-                <AnimeItemList data={anime} />
-              </li>
-            );
+            return <AnimeItemList data={anime} key={i} />;
           })}
 
           <li>

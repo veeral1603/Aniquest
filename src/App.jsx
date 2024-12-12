@@ -11,6 +11,7 @@ import Ova from "./Pages/Ova";
 import Ona from "./Pages/Ona";
 import Upcoming from "./Pages/Upcoming";
 import Genre from "./Pages/Genre";
+import Search from "./Pages/Search";
 
 export default function App() {
   return (
@@ -26,12 +27,15 @@ export default function App() {
 
           <Route path="watch-list" element={<WatchList />} />
           <Route path="anime" element={<Anime />} />
+          <Route path="anime/:anime" element={<Anime />} />
           <Route path="ova" element={<Ova />} />
           <Route path="ona" element={<Ona />} />
           <Route path="upcoming" element={<Upcoming />} />
 
           <Route path="genre" element={<Genre />} />
           <Route path="genre/:genre/:genreid" element={<Genre />} />
+
+          <Route path="search" element={<Search />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

@@ -7,7 +7,7 @@ import PrimaryButton from "./PrimaryButton";
 import SearchBar from "./SearchBar";
 import { SidebarMenu } from "./SidebarMenu";
 import { useEffect, useState } from "react";
-import DropdownSearchbar from "./DropdownSearchbar";
+import ResultsContainer from "./ResultsContainer";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -58,16 +58,22 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <SearchBar filterBtn={true} />
+        <SearchBar
+          filterBtn={true}
+          className={"desktopSearchBar"}
+          toggleSearch={toggleMobileSearch}
+          isMobileSearchOpen={isMobileSearchOpen}
+          setIsMobileSearchOpen={setIsMobileSearchOpen}
+        />
 
-        <div className={styles.navLinksContainer}>
+        <div className={`${styles.navLinksContainer} `}>
           <div className={styles.mobileSearchBtnContainer}>
             <button onClick={toggleMobileSearch}>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </div>
 
-          <div className={styles.navLinks}>
+          <div className={`${styles.navLinks} navLinks`}>
             <ul>
               <li>
                 <NavLink to={"/"}>Home</NavLink>
@@ -85,7 +91,9 @@ export default function Navbar() {
           </div>
 
           <NavLink to={"/watch-list"}>
-            <PrimaryButton padding="8px 16px">Watch List</PrimaryButton>
+            <PrimaryButton padding="8px 16px" className={"watchListBtn"}>
+              Watch List
+            </PrimaryButton>
           </NavLink>
         </div>
       </nav>
@@ -95,12 +103,12 @@ export default function Navbar() {
         isOpen={isMobileMenuOpen}
       />
 
-      {isMobileSearchOpen && (
+      {/* {isMobileSearchOpen && (
         <DropdownSearchbar
           isOpen={isMobileSearchOpen}
           setIsOpen={setIsMobileSearchOpen}
         />
-      )}
+      )} */}
     </>
   );
 }
