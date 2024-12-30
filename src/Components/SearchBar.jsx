@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import ResultsContainer from "./ResultsContainer";
+
 import SearchLoader from "./SearchLoader";
 import AnimeItemList from "./AnimeItemList";
 
@@ -18,7 +18,6 @@ export default function SearchBar({
   width,
   filterBtn = false,
   className,
-  toggleSearch,
   isMobileSearchOpen,
   setIsMobileSearchOpen,
 }) {
@@ -104,15 +103,6 @@ export default function SearchBar({
       ref={inputRef}
     >
       <div className={`${styles.searchBarContainer}`}>
-        <Link to={"/search"}>
-          <button
-            className={styles.filterBtnMobile}
-            onClick={() => toggleSearch()}
-          >
-            <FontAwesomeIcon icon={faFilter} />
-          </button>
-        </Link>
-
         <div className={styles.searchBar} style={width ? searchBarStyles : {}}>
           <form>
             <input

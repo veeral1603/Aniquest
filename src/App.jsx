@@ -27,7 +27,7 @@ export default function App() {
 
           <Route path="watch-list" element={<WatchList />} />
           <Route path="anime" element={<Anime />} />
-          <Route path="anime/:anime" element={<Anime />} />
+          <Route path="anime/:animeId" element={<Anime />} />
           <Route path="ova" element={<Ova />} />
           <Route path="ona" element={<Ona />} />
           <Route path="upcoming" element={<Upcoming />} />

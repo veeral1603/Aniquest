@@ -3,13 +3,14 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import ShareSection from "../Components/ShareSection";
 import Loader from "../Components/Loader";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ResultsSection from "../Components/ResultsSection";
 import Footer from "../Components/Footer";
 
 export default function Search() {
   const [searchParam, setSearchParam] = useSearchParams();
   const keyword = searchParam.get("keyword");
+  let prevKeyword = useRef(keyword);
 
   const page = searchParam.get("page");
 
@@ -24,6 +25,12 @@ export default function Search() {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+
+      if (prevKeyword.current != keyword) {
+        setCurrentPage(1);
+        prevKeyword.current = keyword;
+        return;
+      }
 
       let url = keyword
         ? `https://api.jikan.moe/v4/anime?q=${keyword}&sfw=true&limit=24&filter=bypopularity&page=${currentPage}`

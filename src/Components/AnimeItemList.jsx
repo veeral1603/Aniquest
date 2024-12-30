@@ -28,13 +28,7 @@ export default function AnimeItemList({
   return (
     <li
       onClick={() => {
-        navigate(
-          `/anime/${
-            title_english
-              ? title_english.split(" ").join("-")
-              : title.split(" ").join("-")
-          }-${mal_id}`
-        );
+        navigate(`/anime/${mal_id}`);
         setIsMobileSearchOpen(false);
         setQuery("");
         setIsResultOpen(false);

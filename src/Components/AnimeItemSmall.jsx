@@ -24,15 +24,7 @@ export default function AnimeItemSmall({ data, animeType = "s" }) {
   return (
     <div
       className={styles.AnimeItem}
-      onClick={() =>
-        navigate(
-          `/anime/${
-            title_english
-              ? title_english.split(" ").join("-")
-              : title.split(" ").join("-")
-          }-${mal_id}`
-        )
-      }
+      onClick={() => navigate(`/anime/${mal_id}`)}
     >
       <div className={styles.CoverContainer}>
         <img src={large_image_url} loading="lazy" />

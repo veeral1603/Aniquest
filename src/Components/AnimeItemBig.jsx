@@ -18,15 +18,7 @@ export default function AnimeItemBig({ data, rank }) {
   return (
     <div
       className={styles.AnimeItem}
-      onClick={() =>
-        navigate(
-          `/anime/${
-            title_english
-              ? title_english.split(" ").join("-")
-              : title.split(" ").join("-")
-          }-${mal_id}`
-        )
-      }
+      onClick={() => navigate(`/anime/${mal_id}`)}
     >
       <div className={styles.CoverContainer}>
         <img src={large_image_url} />

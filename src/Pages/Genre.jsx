@@ -32,7 +32,7 @@ export default function Genre() {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://api.jikan.moe/v4/anime?genres=${genreid}&page=${currentPage}&limit=24`
+          `https://api.jikan.moe/v4/anime?genres=${genreid}&page=${currentPage}&limit=24&sfw=true`
         );
 
         const data = await res.json();

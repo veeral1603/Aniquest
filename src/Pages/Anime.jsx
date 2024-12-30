@@ -1,15 +1,67 @@
 import { useParams } from "react-router-dom";
+import AnimeHeaderSection from "../Components/AnimeHeaderSection";
+import { useEffect, useState } from "react";
+import Loader from "../Components/Loader";
+import Footer from "../Components/Footer";
+import RecommendedAnimeSection from "../Components/RecommendedAnimeSection";
+import CharactersSection from "../Components/CharactersSection";
 
 export default function Anime() {
-  const { anime } = useParams();
-  const animeId = anime.split("-")[anime.split("-").length - 1];
+  const { animeId } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [animeDetails, setAnimeDetails] = useState([]);
+  const [recommendedAnime, setRecommendedAnime] = useState([]);
+  const [charactersList, setCharactersList] = useState([]);
 
-  return (
+  const fetchWithDelay = async (urls, delay) => {
+    const results = [];
+    for (const url of urls) {
+      const response = await fetch(url);
+      const data = await response.json();
+      results.push(data.data);
+
+      await new Promise((resolve) => setTimeout(resolve, delay)); // Add delay between calls
+    }
+
+    return results;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const urls = [
+        `https://api.jikan.moe/v4/anime/${animeId}/full`,
+        `https://api.jikan.moe/v4/characters/${animeId}/anime`,
+      ];
+
+      try {
+        const [animeDetailsData, charactersListData] = await fetchWithDelay(
+          urls,
+          500
+        );
+
+        setAnimeDetails(animeDetailsData);
+        setCharactersList(charactersListData);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [animeId]);
+
+  return loading ? (
+    <Loader />
+  ) : (
     <>
       <div className="content-wrapper">
-        <div>Anime</div>
-        <div>{animeId}</div>
+        <AnimeHeaderSection data={animeDetails} />
+
+        <CharactersSection data={charactersList} />
       </div>
+
+      <Footer />
     </>
   );
 }

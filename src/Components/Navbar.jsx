@@ -7,7 +7,6 @@ import PrimaryButton from "./PrimaryButton";
 import SearchBar from "./SearchBar";
 import { SidebarMenu } from "./SidebarMenu";
 import { useEffect, useState } from "react";
-import ResultsContainer from "./ResultsContainer";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -59,7 +58,6 @@ export default function Navbar() {
         </div>
 
         <SearchBar
-          filterBtn={true}
           className={"desktopSearchBar"}
           toggleSearch={toggleMobileSearch}
           isMobileSearchOpen={isMobileSearchOpen}

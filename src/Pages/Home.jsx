@@ -50,7 +50,7 @@ export default function Home() {
     if (!cache) return null;
 
     const { data, timestamp } = JSON.parse(cache);
-    const cacheDuration = 1000 * 60 * 60 * 24 * 5; // Cache valid for 1 hour
+    const cacheDuration = 1000 * 60 * 60 * 24 * 1; // Cache valid for 5 days
 
     if (Date.now() - timestamp < cacheDuration) {
       return data;

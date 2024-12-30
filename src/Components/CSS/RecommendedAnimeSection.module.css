@@ -1,0 +1,51 @@
+.ContentContainer
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+}
+
+.AnimeContainer
+{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+}
+
+
+@media (max-width: 1440px) {
+
+    .AnimeContainer { grid-template-columns: repeat(4, 1fr);}
+
+}
+
+
+@media (max-width: 1200px) {
+
+    .AnimeContainer 
+    { 
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .GenresContainer { display: none;}
+    .ContentContainer { grid-template-columns: 1fr;}
+}
+
+@media (max-width: 992px) {
+
+    
+    
+}
+
+
+@media (max-width: 768px) {
+    .AnimeContainer { grid-template-columns: repeat(3, 1fr);}
+    
+}
+
+@media (max-width: 480px) {
+    .AnimeContainer { grid-template-columns: repeat(2, 1fr);}
+    
+}
