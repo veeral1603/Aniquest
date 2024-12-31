@@ -13,6 +13,10 @@ import Upcoming from "./Pages/Upcoming";
 import Genre from "./Pages/Genre";
 import Search from "./Pages/Search";
 import Character from "./Pages/Character";
+import TopAiring from "./Pages/TopAiring";
+import MostPopular from "./Pages/MostPopular";
+import MostFavorite from "./Pages/MostFavorite";
+import RecentEpisodes from "./Pages/RecentEpisodes";
 
 export default function App() {
   return (
@@ -39,6 +43,11 @@ export default function App() {
 
           <Route path="genre" element={<Genre />} />
           <Route path="genre/:genre/:genreid" element={<Genre />} />
+
+          <Route path="top-airing" element={<TopAiring />} />
+          <Route path="most-popular" element={<MostPopular />} />
+          <Route path="most-favorite" element={<MostFavorite />} />
+          <Route path="recent-episodes" element={<RecentEpisodes />} />
 
           <Route path="search" element={<Search />} />
           <Route path="*" element={<PageNotFound />} />
