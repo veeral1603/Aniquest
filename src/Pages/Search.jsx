@@ -23,13 +23,11 @@ export default function Search() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
-      setLoading(true);
-
       if (prevKeyword.current != keyword) {
         setCurrentPage(1);
         prevKeyword.current = keyword;
-        return;
       }
 
       let url = keyword
@@ -42,19 +40,22 @@ export default function Search() {
         const data = await res.json();
 
         if (data.data.length == 0) {
-          navigate("/page-not-found");
+          setCurrentPage(1);
+          return;
         }
 
         setSearchResultList(data.data);
         setPagination(data.pagination);
         setTotalAnime(data.pagination.items.total);
+
+        setLoading(false);
       } catch (err) {
         console.log(err);
       } finally {
-        setLoading(false);
+        //not using fially to set loading to false because it will exrcute regardless of returning the try block which was causing page shifts
       }
     };
-
+    setLoading(true);
     fetchData();
   }, [currentPage, navigate, keyword]);
 

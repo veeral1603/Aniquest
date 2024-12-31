@@ -1,0 +1,126 @@
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.characterItem
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #1f1f2e;
+    padding: 18px 12px;
+    border-radius: 10px;
+    
+    border: 1px solid #242435;
+    animation:  fadeInSlideUp 0.5s ease-out forwards;
+}
+
+
+.characterIconContainer, .voiceActorIconContainer
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    
+
+    &:hover img {
+        transform: scale(1.1);
+        transition: transform 0.1s ease;
+    }
+}
+
+
+
+.characterIconContainer img, .voiceActorIconContainer img
+{
+    width: 100%;
+}
+
+.character , .voiceActor
+{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+  
+
+.character:hover .characterInfo p:first-child
+{
+    color: #fae065;
+}
+
+.voiceActor
+{
+    flex-direction: row-reverse;
+}
+
+
+.characterInfo, .voiceActorInfo
+{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1em;
+    
+}
+
+.characterInfo
+{
+    align-items: flex-start;
+    text-align: left;
+}
+
+.voiceActorInfo
+{
+    align-items: flex-end;
+    text-align: right;
+}
+
+.characterInfo p:first-child , .voiceActorInfo p:first-child
+{
+    font-size: 13px;
+}
+
+
+
+.characterInfo p:last-child , .voiceActorInfo p:last-child
+{
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+@media (max-width: 1200px) {
+
+    .characterInfo p:first-child , .voiceActorInfo p:first-child { font-size: 12px;}
+
+    .characterItem { padding: 14px 10px;}
+
+}
+
+@media (max-width: 768px) {
+
+    .characterIconContainer, .voiceActorIconContainer { 
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 568px) {
+
+    .characterIconContainer, .voiceActorIconContainer { 
+        width: 50px;
+        height: 50px;
+    }
+    .characterInfo p:first-child , .voiceActorInfo p:first-child { font-size: 13px;}
+}
+

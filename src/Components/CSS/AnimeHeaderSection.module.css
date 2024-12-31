@@ -237,7 +237,7 @@
 
     padding-inline: 20px;
     padding-block: 30px;
-    background-color: rgba(0, 0, 0, 0.30);
+    background-color: rgba(14, 11, 29, 0.3);
     backdrop-filter: blur(10px);
 
 
@@ -259,9 +259,9 @@
 {
     color: rgba(255, 255, 255, 0.4);
     font-size: 13px;
-    height: 200px;
+    max-height: 200px;
     overflow: scroll;
-    margin-block: 10px ;
+    margin-block: 4px 10px ;
     padding-inline-end: 4px;
 }
 
@@ -367,9 +367,9 @@
     }
 
     .outerWrapperMain .itemList a
-{
-    margin-block-end: 0;
-}
+    {
+        margin-block-end: 5px;
+    }
 
 
     .innerWrapper

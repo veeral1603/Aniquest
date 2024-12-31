@@ -77,7 +77,6 @@ export default function SearchBar({
 
   useEffect(() => {
     const handleClickOut = (e) => {
-      console.log(e.target);
       if (
         resultsRef.current &&
         !resultsRef.current.contains(e.target) &&

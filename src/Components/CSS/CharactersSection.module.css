@@ -1,0 +1,44 @@
+.charactersContainer
+{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.viewAllBtn
+{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: inherit;
+    margin-block-start: 12px;
+    font-size: 14px;
+}
+
+@media (max-width: 1440px) {
+
+    .charactersContainer { 
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+}
+
+
+@media (max-width: 992px) {
+
+    .charactersContainer { grid-template-columns: repeat(2, 1fr);}
+
+    .viewAllBtn { 
+        margin-block-start: 16px;
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .charactersContainer { 
+        grid-template-columns: repeat(1, 1fr);
+        gap: 14px;
+    }
+}

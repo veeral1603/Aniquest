@@ -2,6 +2,7 @@
 {
     cursor: pointer;
     position: relative;
+    border-radius: 8px;
 }
 
 .AnimeItem:hover .Title
@@ -14,6 +15,7 @@
     overflow: hidden;
     object-fit: contain;
     position: relative;
+    border-radius: 8px;
 }
 
 .CoverContainer img
@@ -21,6 +23,7 @@
     width: 100%;
     height: 100%;
     aspect-ratio: 2/3;
+    border-radius: 8px;
 }
 
 .CoverContainer div

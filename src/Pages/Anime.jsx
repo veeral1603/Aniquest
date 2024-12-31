@@ -3,7 +3,8 @@ import AnimeHeaderSection from "../Components/AnimeHeaderSection";
 import { useEffect, useState } from "react";
 import Loader from "../Components/Loader";
 import Footer from "../Components/Footer";
-import RecommendedAnimeSection from "../Components/RecommendedAnimeSection";
+import ShareSection from "../Components/ShareSection";
+
 import CharactersSection from "../Components/CharactersSection";
 
 export default function Anime() {
@@ -30,7 +31,7 @@ export default function Anime() {
     const fetchData = async () => {
       const urls = [
         `https://api.jikan.moe/v4/anime/${animeId}/full`,
-        `https://api.jikan.moe/v4/characters/${animeId}/anime`,
+        `https://api.jikan.moe/v4/anime/${animeId}/characters`,
       ];
 
       try {
@@ -57,6 +58,7 @@ export default function Anime() {
     <>
       <div className="content-wrapper">
         <AnimeHeaderSection data={animeDetails} />
+        <ShareSection />
 
         <CharactersSection data={charactersList} />
       </div>

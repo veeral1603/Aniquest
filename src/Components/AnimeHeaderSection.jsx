@@ -150,13 +150,14 @@ export default function AnimeHeaderSection({ data }) {
 
             <div className={`${styles.item} ${styles.itemList}`}>
               <span className={styles.itemHeading}>Genres: </span>
-              {genres.map((genre) => {
+              {genres.map((genre, i) => {
                 {
                   return (
                     <Link
                       to={`/genre/${genre.name.toLowerCase()}/${
                         genre.mal_id
                       }?page=1`}
+                      key={i}
                     >
                       {genre.name}
                     </Link>
@@ -250,13 +251,14 @@ export default function AnimeHeaderSection({ data }) {
 
           <div className={`${styles.item} ${styles.itemList}`}>
             <span className={styles.itemHeading}>Genres: </span>
-            {genres.map((genre) => {
+            {genres.map((genre, i) => {
               {
                 return (
                   <Link
                     to={`/genre/${genre.name.toLowerCase()}/${
                       genre.mal_id
                     }?page=1`}
+                    key={i}
                   >
                     {genre.name}
                   </Link>
