@@ -43,6 +43,7 @@ export default function FeaturedSlider({ data }) {
             const {
               mal_id,
               title_english,
+              title,
               synopsis,
               images: {
                 webp: { large_image_url },
@@ -81,7 +82,7 @@ export default function FeaturedSlider({ data }) {
 
                   <div className={styles.contentContainer}>
                     <div className={styles.title}>
-                      <h1>{title_english}</h1>
+                      <h1>{title_english ? title_english : title}</h1>
                       <p>{synopsis.substring(0, 300)}...</p>
                     </div>
 

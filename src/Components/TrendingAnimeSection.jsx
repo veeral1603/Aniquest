@@ -8,7 +8,7 @@ import { SwiperSlide, Swiper } from "swiper/react";
 import "swiper/css";
 
 import "swiper/css/pagination";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -28,7 +28,7 @@ export default function TrendingAnimeSection({ data }) {
 
       <div className={styles.TrendingAnime}>
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
           slidesPerView={2.25}
           spaceBetween={10}
           breakpoints={{

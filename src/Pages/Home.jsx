@@ -86,7 +86,7 @@ export default function Home() {
       // Fetch fresh data
 
       const urls = [
-        "https://api.jikan.moe/v4/top/anime?filter=favorite&sfw=true&limit=10&page=3", //Featued Slider
+        "https://api.jikan.moe/v4/top/anime?filter=favorite&sfw=true&limit=10&page=2", //Featued Slider
         "https://api.jikan.moe/v4/top/anime?filter=bypopularity&sfw=true&limit=16&page=2", //Trending Anime
         "https://api.jikan.moe/v4/top/anime?filter=airing&sfw=true&limit=5", //Top Airing
         "https://api.jikan.moe/v4/top/anime?filter=bypopularity&sfw=true&limit=5", //Most Popular

@@ -2,9 +2,19 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./CSS/AnimeHeaderSection.module.css";
-import { faAdd, faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAdd,
+  faCirclePlay,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  saveToWatchList,
+  checkIfExist,
+  removeFromWatchList,
+} from "../Pages/WatchList";
+import { Bounce, toast } from "react-toastify";
 
 function capitalizeFirstLetter(word) {
   if (!word) return ""; // Handle empty or undefined input
@@ -35,8 +45,45 @@ export default function AnimeHeaderSection({ data }) {
     genres,
     studios,
     producers,
+    rating,
     trailer: { url },
   } = data;
+
+  const watchListData = {
+    images: {
+      webp: {
+        large_image_url,
+      },
+    },
+    title_english,
+    title,
+    episodes,
+    type,
+    duration,
+    rating,
+    mal_id,
+  };
+
+  const isExist = checkIfExist(watchListData);
+
+  const [existsInWatchList, setExistsInWatchList] = useState(isExist);
+
+  const toastSettings = {
+    position: "top-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    style: {
+      fontFamily: "inherit",
+      backgroundColor: "#1f1f2e",
+      border: "1px solid #242435",
+      fontWeight: "500",
+    },
+    transition: Bounce,
+  };
 
   return (
     <section className={` ${styles.animeHeader}`}>
@@ -84,8 +131,31 @@ export default function AnimeHeaderSection({ data }) {
                 </a>
               )}
 
-              <button>
-                <FontAwesomeIcon icon={faAdd} /> Add to List
+              <button
+                onClick={() => {
+                  if (existsInWatchList) {
+                    removeFromWatchList(watchListData);
+                    setExistsInWatchList(false);
+                    toast(`Removed from watchlist!`, toastSettings);
+                    return;
+                  }
+
+                  saveToWatchList(watchListData);
+                  setExistsInWatchList(true);
+                  toast(`Added to watchlist!`, toastSettings);
+                }}
+              >
+                {existsInWatchList ? (
+                  <>
+                    <FontAwesomeIcon icon={faTrash} />
+                    Remove from watchlist
+                  </>
+                ) : (
+                  <>
+                    <FontAwesomeIcon icon={faAdd} />
+                    Add to watchlist
+                  </>
+                )}
               </button>
             </div>
 
@@ -172,7 +242,7 @@ export default function AnimeHeaderSection({ data }) {
                 {studios.map((studio, i) => {
                   {
                     return (
-                      <span>
+                      <span key={i}>
                         {studio.name} {i < studios.length - 1 ? ", " : ""}
                       </span>
                     );
@@ -187,7 +257,7 @@ export default function AnimeHeaderSection({ data }) {
                 {producers.map((producer, i) => {
                   {
                     return (
-                      <span>
+                      <span key={i}>
                         {producer.name} {i < producers.length - 1 ? ", " : ""}
                       </span>
                     );

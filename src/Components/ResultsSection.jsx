@@ -14,6 +14,7 @@ export default function ResultsSection({
   currentPage,
   setCurrentPage,
   setLoading,
+  isPagination = true,
 }) {
   return (
     <section className={`container ${styles.resultsSection}`}>
@@ -21,6 +22,11 @@ export default function ResultsSection({
         <PrimaryHeading>{pageTitle}</PrimaryHeading>
 
         <div className={styles.resultsContainer}>
+          {data.length == 0 ? (
+            <p className={styles.emptyList}>Your Watch List is Empty!</p>
+          ) : (
+            ""
+          )}
           {data.map((anime, i) => {
             {
               return <AnimeItemSmall data={anime} key={i} animeType="m" />;
@@ -28,12 +34,14 @@ export default function ResultsSection({
           })}
         </div>
 
-        <Pagination
-          pagination={pagination}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          setLoading={setLoading}
-        />
+        {isPagination && (
+          <Pagination
+            pagination={pagination}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            setLoading={setLoading}
+          />
+        )}
       </div>
 
       <div className={styles.sidebar}>

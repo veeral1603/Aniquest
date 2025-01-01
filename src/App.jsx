@@ -17,6 +17,7 @@ import TopAiring from "./Pages/TopAiring";
 import MostPopular from "./Pages/MostPopular";
 import MostFavorite from "./Pages/MostFavorite";
 import RecentEpisodes from "./Pages/RecentEpisodes";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="search" element={<Search />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <ToastContainer />
       </BrowserRouter>
     </>
   );
