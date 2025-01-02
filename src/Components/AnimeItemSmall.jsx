@@ -82,7 +82,7 @@ export default function AnimeItemSmall({
     // const URL =
     //   "https://" + window.location.href.split("/")[2] + `/anime/${animeId}`;
 
-    const URL = `https://aniquest-eta.vercel.app/anime/${animeId}}`;
+    const URL = `https://aniquest-eta.vercel.app/anime/${animeId}`;
 
     if (navigator.share) {
       try {
