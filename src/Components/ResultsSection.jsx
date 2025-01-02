@@ -15,6 +15,7 @@ export default function ResultsSection({
   setCurrentPage,
   setLoading,
   isPagination = true,
+  setWatchListData,
 }) {
   return (
     <section className={`container ${styles.resultsSection}`}>
@@ -29,7 +30,14 @@ export default function ResultsSection({
           )}
           {data.map((anime, i) => {
             {
-              return <AnimeItemSmall data={anime} key={i} animeType="m" />;
+              return (
+                <AnimeItemSmall
+                  data={anime}
+                  key={i}
+                  animeType="m"
+                  setWatchListData={setWatchListData}
+                />
+              );
             }
           })}
         </div>

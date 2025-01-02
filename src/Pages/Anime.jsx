@@ -29,6 +29,7 @@ export default function Anime() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       const urls = [
         `https://api.jikan.moe/v4/anime/${animeId}/full`,
         `https://api.jikan.moe/v4/anime/${animeId}/characters`,

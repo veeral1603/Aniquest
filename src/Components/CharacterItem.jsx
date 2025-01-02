@@ -30,13 +30,7 @@ export default function CharacterItem({ char, closeModal }) {
 
   return (
     <div className={styles.characterItem}>
-      <div
-        className={styles.character}
-        onClick={() => {
-          navigate(`/character/${mal_id}`);
-          closeModal();
-        }}
-      >
+      <div className={styles.character}>
         <div className={styles.characterIconContainer}>
           <img src={image_url} />
         </div>

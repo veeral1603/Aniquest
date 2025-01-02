@@ -33,7 +33,7 @@ export const checkIfExist = (obj) => {
   return watchList.some((arrObj) => arrObj.mal_id === obj.mal_id);
 };
 
-export const removeFromWatchList = (obj) => {
+export const deleteFromWatchList = (obj) => {
   const newArr = getWatchList().filter(
     (arrObj) => arrObj.mal_id !== obj.mal_id
   );
@@ -44,7 +44,10 @@ export const removeFromWatchList = (obj) => {
 export default function WatchList() {
   const [loading, setLoading] = useState(true);
   const [featuredSliderList, setFeaturedSliderList] = useState([]);
-  const [watchListData, setWatchListData] = useState([]);
+
+  const [watchListData, setWatchListData] = useState(
+    JSON.parse(localStorage.getItem(CACHE_KEY))
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +80,8 @@ export default function WatchList() {
         <ResultsSection
           isPagination={false}
           pageTitle={"Your Watch List"}
-          data={getWatchList()}
+          data={watchListData}
+          setWatchListData={setWatchListData}
         />
       </div>
       <Footer />

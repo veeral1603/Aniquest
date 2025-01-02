@@ -1,3 +1,15 @@
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: .5;
+        transform: translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 .AnimeItem
 {
     cursor: pointer;
@@ -8,7 +20,7 @@
 .AnimeItem:hover .Title
 {
     color: #fae065;
-}
+} 
 
 .CoverContainer
 {
@@ -40,6 +52,14 @@
     font-size: 12px;
 }
 
+.infoContainer
+{
+    display: flex;
+    
+    justify-content: space-between;
+    gap: 6px;
+}
+
 .TitleContainer
 {
     display: flex;
@@ -52,7 +72,7 @@
 {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 13px;
     color: rgb(168, 168, 168);
 }
 
@@ -65,7 +85,7 @@
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-  
+    
 }
 
 .dot
@@ -77,6 +97,111 @@
     display: inline-block;
     margin-inline: 6px;
 }
+
+
+
+.menuBtn
+{
+    padding-inline: 8px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+}
+
+
+.menuContainer
+{
+    position: absolute;
+    z-index: 45;
+    right: 0;
+    margin-block: 6px 0;
+
+    width: 180px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 6px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    
+    font-size: 13px;
+
+    animation:  fadeInSlideUp 0.1s ease-out forwards;
+}
+
+.menuContainer::after
+{
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 6px;
+    
+    
+    z-index: 100;
+    border-width: 5px;
+    border-style: solid;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent rgba(0, 0, 0, 0.7) transparent;
+}
+
+.menuList
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.menuList li { 
+    width: 100%;
+    overflow: hidden;
+}
+
+.menuList li button
+{
+    color: inherit;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px 12px;
+
+    font-weight: 400;
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    transition: .1s ease;
+
+    &:hover
+    {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fae065;
+    }
+
+}
+
+.menuList li:first-child button 
+{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.menuList li:last-child button 
+{
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+
+
+.menuList li:not(:last-child)
+{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
 
 @media (max-width: 768px)
 {
