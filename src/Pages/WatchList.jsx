@@ -47,6 +47,8 @@ export default function WatchList() {
 
   const [watchListData, setWatchListData] = useState(
     JSON.parse(localStorage.getItem(CACHE_KEY))
+      ? JSON.parse(localStorage.getItem(CACHE_KEY))
+      : []
   );
 
   useEffect(() => {
