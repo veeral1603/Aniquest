@@ -12,7 +12,14 @@ export default function Ona() {
   const [moveisList, setMoviesList] = useState([]);
   const [currentPage, setCurrentPage] = useState(page ? +page : 1);
   const [pagination, setPagination] = useState(null);
+
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [currentPage]);
 
   useEffect(() => {
     const fetchData = async () => {

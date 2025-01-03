@@ -18,12 +18,14 @@ import MostPopular from "./Pages/MostPopular";
 import MostFavorite from "./Pages/MostFavorite";
 import RecentEpisodes from "./Pages/RecentEpisodes";
 import { ToastContainer, Bounce } from "react-toastify";
+import ScrollToTopBtn from "./Components/ScrollToTopBtn";
 
 export default function App() {
   return (
     <>
       <BrowserRouter>
         <Navbar />
+        <ScrollToTopBtn />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="trending" element={<Trending />} />

@@ -15,6 +15,12 @@ export default function Ova() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [currentPage]);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(

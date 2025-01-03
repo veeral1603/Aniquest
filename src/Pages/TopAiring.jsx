@@ -17,6 +17,12 @@ export default function TopAiring() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [currentPage]);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(

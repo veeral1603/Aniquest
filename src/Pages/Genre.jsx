@@ -27,6 +27,12 @@ export default function Genre() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [genreid]);
+
+  useEffect(() => {
     setLoading(true);
 
     const fetchData = async () => {

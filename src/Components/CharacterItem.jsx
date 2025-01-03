@@ -4,16 +4,13 @@ import styles from "./CSS/CharacterItem.module.css";
 import userPic from "../assets/User.webp";
 import { useNavigate } from "react-router-dom";
 
-export default function CharacterItem({ char, closeModal }) {
+export default function CharacterItem({ char }) {
   const {
     name,
     images: {
       webp: { image_url },
     },
-    mal_id,
   } = char.character;
-
-  const navigate = useNavigate();
 
   const role = char.role;
 

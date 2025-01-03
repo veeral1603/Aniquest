@@ -54,8 +54,9 @@ export default function AnimeItemSmall({
     duration,
     rating,
     mal_id,
-    trailer: { url: trailerUrl },
   } = data;
+
+  const trailerUrl = data?.trailer?.url;
 
   const watchListData = {
     images: {

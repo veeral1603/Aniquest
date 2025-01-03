@@ -28,6 +28,12 @@ export default function Anime() {
   };
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [animeId]);
+
+  useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       const urls = [

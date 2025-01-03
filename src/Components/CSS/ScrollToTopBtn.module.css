@@ -1,0 +1,60 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    
+    }
+
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+
+.scrollToTopContainer
+{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 100;
+
+    animation: fadeIn .5s forwards;
+}
+
+.scrollToTopContainer button
+{
+    outline: none;
+    border: 2px solid #141420;
+    background-color: #fae065;
+    color: #333;
+    font-weight: 600;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+@media (max-width: 992px)
+{
+    .scrollToTopContainer
+    {
+        bottom: 25px;
+        right: 25px;
+    }
+
+    .scrollToTopContainer button 
+    {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 768px)
+{
+}

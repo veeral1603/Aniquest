@@ -23,6 +23,12 @@ export default function Search() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [currentPage]);
+
+  useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
       if (prevKeyword.current != keyword) {

@@ -41,6 +41,12 @@ export default function RecentEpisodes() {
     fetchData();
   }, [currentPage, navigate]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [currentPage]);
+
   return loading ? (
     <Loader />
   ) : (

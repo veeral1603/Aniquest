@@ -17,6 +17,12 @@ export default function MostFavorite() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [currentPage]);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(
