@@ -12,7 +12,6 @@ import Ona from "./Pages/Ona";
 import Upcoming from "./Pages/Upcoming";
 import Genre from "./Pages/Genre";
 import Search from "./Pages/Search";
-import Character from "./Pages/Character";
 import TopAiring from "./Pages/TopAiring";
 import MostPopular from "./Pages/MostPopular";
 import MostFavorite from "./Pages/MostFavorite";
@@ -36,9 +35,6 @@ export default function App() {
           <Route path="watch-list" element={<WatchList />} />
           <Route path="anime" element={<Anime />} />
           <Route path="anime/:animeId" element={<Anime />} />
-
-          <Route path="character" element={<Character />} />
-          <Route path="character/:characterId" element={<Character />} />
 
           <Route path="ova" element={<Ova />} />
           <Route path="ona" element={<Ona />} />
