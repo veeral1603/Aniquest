@@ -1,6 +1,6 @@
-
-![AniQuest Logo](./assets/logo.png)
-
+<a href="https://aniquest-eta.vercel.app/">
+<img src="./src/assets/Logo.png" alt="AniQuest Logo" width="250px">
+</a>
 
 # AniQuest - Discover Anime
 
@@ -10,7 +10,7 @@
 
 ## Demo
 
-[Click here for Demo :)](https://aniquest-eta.vercel.app/)
+Visit AniQuest [here](https://aniquest-eta.vercel.app/) :)
 
 
 ## Features
