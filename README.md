@@ -6,12 +6,9 @@
 
 [AniQuest](https://aniquest-eta.vercel.app/) is a React-based web application designed to help users discover and explore anime. Built with Vite for fast development and optimized performance, AniQuest uses the [Jikan API](https://jikan.moe/) to fetch and display detailed anime data.
 
-
-
 ## Demo
 
 Visit AniQuest [here](https://aniquest-eta.vercel.app/) :)
-
 
 ## Features
 
@@ -24,7 +21,6 @@ Visit AniQuest [here](https://aniquest-eta.vercel.app/) :)
 - **Share Anime**: Share your favorite anime with friends using the built-in share feature.
 - **Responsive Design**: [AniQuest](https://aniquest-eta.vercel.app/) is fully optimized for all devices, from desktops to mobile screens.
 
-
 ## Tech Stack
 
 - **React.js**: For building an interactive and efficient UI.
@@ -33,27 +29,32 @@ Visit AniQuest [here](https://aniquest-eta.vercel.app/) :)
 - **Local Storage**: To persist user watchlist data.
 - **CSS Modules**: For styling components with scoped styles.
 
+## Screenshots
+
+<img src="./src/Screenshots/mockup.png" alt="AniQuest Mockup">
+
 ## Installation
 
 Install [AniQuest](https://aniquest-eta.vercel.app/) with npm.
 
-
 ```bash
-  git clone https://github.com/your-username/aniquest.git  
+  git clone https://github.com/your-username/aniquest.git
 
   cd aniquest
 
-  npm install  
+  npm install
 
-  npm run dev  
+  npm run dev
 ```
+
 ### Access AniQuest in Your Browser:
 
 Once the development server is running, open your browser and navigate to:
 
 ```bash
-  http://localhost:5173  
+  http://localhost:5173
 ```
+
 ## API Integration
 
 AniQuest uses the [Jikan API](https://jikan.moe/) to fetch and display real-time anime data.
@@ -61,16 +62,18 @@ AniQuest uses the [Jikan API](https://jikan.moe/) to fetch and display real-time
 ### Example API Request
 
 ```bash
-  fetch('https://api.jikan.moe/v4/anime?q=naruto')  
-  .then((response) => response.json())  
+  fetch('https://api.jikan.moe/v4/anime?q=naruto')
+  .then((response) => response.json())
   .then((data) => console.log(data));
 ```
+
 ## Future Enhancements
 
 - **User Accounts**: Enable users to create accounts and sync watchlists across devices.
 - **Recommendations**: Suggest anime based on users' watchlist or search history.
 - **Advanced Filters**: Add filters for studios, release years, and airing status.
 - **Anime Trailers**: Embed trailers for a richer experience.
+
 ## Contributing
 
 Got an idea to make **AniQuest** even better? Or maybe you found a bug that needs squashing? Awesome! We’d love to have you onboard. Here’s how you can help:
@@ -86,4 +89,3 @@ Let’s make AniQuest awesome together! 🚀
 ## License
 
 This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
-
