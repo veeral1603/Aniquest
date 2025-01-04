@@ -38,9 +38,9 @@ Visit AniQuest [here](https://aniquest-eta.vercel.app/) :)
 Install [AniQuest](https://aniquest-eta.vercel.app/) with npm.
 
 ```bash
-  git clone https://github.com/your-username/aniquest.git
+  git clone https://github.com/veeral1603/aniquest.git
 
-  cd aniquest
+  cd Aniquest
 
   npm install
 
