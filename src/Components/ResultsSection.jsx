@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import { useState } from "react";
 import AnimeItemSmall from "./AnimeItemSmall";
 import styles from "./CSS/ResultsSection.module.css";
 import GenresContainer from "./GenresContainer";
@@ -17,6 +18,8 @@ export default function ResultsSection({
   isPagination = true,
   setWatchListData,
 }) {
+  const [openMenuId, setOpenMenuId] = useState(null);
+
   return (
     <section className={`container ${styles.resultsSection}`}>
       <div className={styles.resultsContainerWrapper}>
@@ -36,6 +39,8 @@ export default function ResultsSection({
                   key={i}
                   animeType="m"
                   setWatchListData={setWatchListData}
+                  openMenuId={openMenuId}
+                  setOpenMenuId={setOpenMenuId}
                 />
               );
             }

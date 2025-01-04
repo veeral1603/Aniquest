@@ -22,6 +22,11 @@ export default function Movies() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `Movies - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

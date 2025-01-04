@@ -22,6 +22,11 @@ export default function TopAiring() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `Top Airing - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

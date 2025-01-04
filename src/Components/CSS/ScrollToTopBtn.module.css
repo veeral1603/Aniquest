@@ -15,7 +15,7 @@
 .scrollToTopContainer
 {
     position: fixed;
-    bottom: 50px;
+    bottom: 80px;
     right: 50px;
     z-index: 100;
 

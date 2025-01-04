@@ -22,6 +22,11 @@ export default function MostFavorite() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `Most Favorite - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

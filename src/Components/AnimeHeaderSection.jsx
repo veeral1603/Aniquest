@@ -7,7 +7,7 @@ import {
   faTrash,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   saveToWatchList,
@@ -99,6 +99,13 @@ export default function AnimeHeaderSection({ data }) {
     toast(`Removed from watchlist!`, toastSettings);
   };
 
+  // Page Title
+  useEffect(() => {
+    document.title = `${
+      data.title_english ? data.title_english : data.title
+    } - AniQuest`;
+  }, [data]);
+
   return (
     <section className={` ${styles.animeHeader}`}>
       <div className={styles.coverWrap}>
@@ -124,10 +131,11 @@ export default function AnimeHeaderSection({ data }) {
             <div className={styles.metaContainer}>
               <span className={styles.Tag}>
                 <FontAwesomeIcon icon={faCirclePlay} />
-                {episodes ? episodes : "? eps"}
+                {episodes ? episodes : "Airing"}
               </span>
               <span className={styles.dot}></span>
-              {type}
+              <span>{type}</span>
+
               <span className={styles.dot}></span>
               {duration ? duration : "?min"}
             </div>
@@ -171,7 +179,11 @@ export default function AnimeHeaderSection({ data }) {
 
             <div className={styles.synopsisContainer}>
               <p>
-                {fullSynopsis ? synopsis : synopsis.slice(0, 600) + "..."}
+                {synopsis
+                  ? fullSynopsis
+                    ? synopsis
+                    : synopsis.slice(0, 600) + "..."
+                  : "No synopsis available."}
                 {synopsis.length > 600 && (
                   <button
                     className={styles.showMoreBtn}
@@ -284,44 +296,48 @@ export default function AnimeHeaderSection({ data }) {
           <div className={`${styles.item} ${styles.synopsisHidden}`}>
             <span className={styles.itemHeading}>Overview: </span>
             <div className={styles.synopsisText}>
-              <p>{synopsis}</p>
+              <p>{synopsis ? synopsis : "No overview available."}</p>
             </div>
           </div>
 
           <div className={styles.item}>
             <span className={styles.itemHeading}>Japanese: </span>
-            <span className={styles.itemContent}>{title_japanese}</span>
+            <span className={styles.itemContent}>
+              {title_japanese ? title_japanese : "?"}
+            </span>
           </div>
 
           {title_synonyms.length > 0 && (
             <div className={styles.item}>
               <span className={styles.itemHeading}>Synonyms: </span>
               <span className={styles.itemContent}>
-                {title_synonyms.join(", ")}
+                {title_synonyms ? title_synonyms.join(", ") : "No synonyms"}
               </span>
             </div>
           )}
 
           <div className={styles.item}>
             <span className={styles.itemHeading}>Aired: </span>
-            <span className={styles.itemContent}>{string}</span>
+            <span className={styles.itemContent}>{string ? string : "?"}</span>
           </div>
 
           <div className={styles.item}>
             <span className={styles.itemHeading}>Premiered: </span>
             <span className={styles.itemContent}>
-              {capitalizeFirstLetter(season)} {year}
+              {year ? `${capitalizeFirstLetter(season)} ${year}` : "?"}
             </span>
           </div>
 
           <div className={styles.item}>
             <span className={styles.itemHeading}>Duration: </span>
-            <span className={styles.itemContent}>{duration}</span>
+            <span className={styles.itemContent}>
+              {duration ? duration : "?"}
+            </span>
           </div>
 
           <div className={styles.item}>
             <span className={styles.itemHeading}>Status: </span>
-            <span className={styles.itemContent}>{status}</span>
+            <span className={styles.itemContent}>{status ? status : "?"}</span>
           </div>
 
           <div className={styles.item}>
@@ -331,49 +347,55 @@ export default function AnimeHeaderSection({ data }) {
 
           <div className={`${styles.item} ${styles.itemList}`}>
             <span className={styles.itemHeading}>Genres: </span>
-            {genres.map((genre, i) => {
-              {
-                return (
-                  <Link
-                    to={`/genre/${genre.name.toLowerCase()}/${
-                      genre.mal_id
-                    }?page=1`}
-                    key={i}
-                  >
-                    {genre.name}
-                  </Link>
-                );
-              }
-            })}
+            {genres
+              ? genres.map((genre, i) => {
+                  {
+                    return (
+                      <Link
+                        to={`/genre/${genre.name.toLowerCase()}/${
+                          genre.mal_id
+                        }?page=1`}
+                        key={i}
+                      >
+                        {genre.name}
+                      </Link>
+                    );
+                  }
+                })
+              : "No Information."}
           </div>
 
           <div className={styles.item}>
             <span className={styles.itemHeading}>Studios: </span>
             <span className={styles.itemContent}>
-              {studios.map((studio, i) => {
-                {
-                  return (
-                    <span>
-                      {studio.name} {i < studios.length - 1 ? ", " : ""}
-                    </span>
-                  );
-                }
-              })}
+              {studios
+                ? studios.map((studio, i) => {
+                    {
+                      return (
+                        <span key={i}>
+                          {studio.name} {i < studios.length - 1 ? ", " : ""}
+                        </span>
+                      );
+                    }
+                  })
+                : "No Information."}
             </span>
           </div>
 
           <div className={styles.item}>
             <span className={styles.itemHeading}>Producers: </span>
             <span className={styles.itemContent}>
-              {producers.map((producer, i) => {
-                {
-                  return (
-                    <span>
-                      {producer.name} {i < producers.length - 1 ? ", " : ""}
-                    </span>
-                  );
-                }
-              })}
+              {producers
+                ? producers.map((producer, i) => {
+                    {
+                      return (
+                        <span key={i}>
+                          {producer.name} {i < producers.length - 1 ? ", " : ""}
+                        </span>
+                      );
+                    }
+                  })
+                : "No Information."}
             </span>
           </div>
         </div>

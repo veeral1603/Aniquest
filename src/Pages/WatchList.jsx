@@ -57,6 +57,11 @@ export default function WatchList() {
     });
   }, []);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `Watch List - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

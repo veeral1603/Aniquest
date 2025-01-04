@@ -20,6 +20,11 @@ export default function Ova() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `OVA - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

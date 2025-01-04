@@ -20,6 +20,11 @@ export default function Trending() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `Trending Anime - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

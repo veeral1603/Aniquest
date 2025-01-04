@@ -15,7 +15,7 @@ export default function ScrollToTopBtn() {
 
   useEffect(() => {
     function handleScroll() {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);

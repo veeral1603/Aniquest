@@ -42,6 +42,8 @@ export default function AnimeItemSmall({
   data,
   animeType = "s",
   setWatchListData,
+  openMenuId,
+  setOpenMenuId,
 }) {
   const {
     images: {
@@ -74,7 +76,6 @@ export default function AnimeItemSmall({
     trailer: { url: trailerUrl },
   };
 
-  const [openMenuId, setOpenMenuId] = useState(null);
   const isExist = checkIfExist(watchListData);
 
   const [existsInWatchList, setExistsInWatchList] = useState(isExist);

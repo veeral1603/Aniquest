@@ -27,11 +27,14 @@ export default function Anime() {
     return results;
   };
 
+  // Scroll to top
   useEffect(() => {
     window.scrollTo({
       top: 0,
     });
   }, [animeId]);
+
+  // Fetching Data
 
   useEffect(() => {
     const fetchData = async () => {

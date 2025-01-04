@@ -20,6 +20,11 @@ export default function TvShows() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `TV Shows - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

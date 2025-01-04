@@ -61,6 +61,11 @@ export default function Home() {
     return null;
   };
 
+  // Page Title
+  useEffect(() => {
+    document.title = `AniQuest - Discover Anime`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -92,7 +97,7 @@ export default function Home() {
         "https://api.jikan.moe/v4/top/anime?filter=bypopularity&sfw=true&limit=5", //Most Popular
         "https://api.jikan.moe/v4/top/anime?filter=favorite&sfw=true&limit=5", //Most Favorite
         "https://api.jikan.moe/v4/seasons/now?sfw&limit=5", //Latest Episodes
-        "https://api.jikan.moe/v4/seasons/upcoming?sfw&limit=12", //Upcoming Anime
+        "https://api.jikan.moe/v4/seasons/upcoming?sfw&limit=16", //Upcoming Anime
       ];
 
       try {

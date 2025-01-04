@@ -16,7 +16,7 @@ import TopAiring from "./Pages/TopAiring";
 import MostPopular from "./Pages/MostPopular";
 import MostFavorite from "./Pages/MostFavorite";
 import RecentEpisodes from "./Pages/RecentEpisodes";
-import { ToastContainer, Bounce } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ScrollToTopBtn from "./Components/ScrollToTopBtn";
 
 export default function App() {

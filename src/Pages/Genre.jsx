@@ -15,7 +15,6 @@ function capitalizeWords(str) {
 export default function Genre() {
   const [pageParam, setPageParam] = useSearchParams();
   const page = pageParam.get("page");
-  console.log(page);
 
   const { genre, genreid } = useParams();
 
@@ -31,6 +30,11 @@ export default function Genre() {
       top: 0,
     });
   }, [genreid]);
+
+  // Page Title
+  useEffect(() => {
+    document.title = `${capitalizeWords(genre)} Anime - AniQuest`;
+  }, [genre]);
 
   useEffect(() => {
     setLoading(true);

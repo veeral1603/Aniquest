@@ -20,6 +20,11 @@ export default function Upcoming() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `Upcoming Anime - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,7 +34,12 @@ export default function Upcoming() {
 
         const data = await res.json();
 
-        setMoviesList(data.data);
+        const dataFiltered = data.data.filter(
+          (anime, index, self) =>
+            self.findIndex((a) => a.mal_id === anime.mal_id) === index
+        );
+
+        setMoviesList(dataFiltered);
         setPagination(data.pagination);
       } catch (err) {
         console.log(err);

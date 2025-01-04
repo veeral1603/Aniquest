@@ -21,6 +21,11 @@ export default function Ona() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `ONA - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

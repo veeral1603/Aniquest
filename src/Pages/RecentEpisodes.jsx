@@ -47,6 +47,11 @@ export default function RecentEpisodes() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `Recent Episodes - AniQuest`;
+  }, []);
+
   return loading ? (
     <Loader />
   ) : (

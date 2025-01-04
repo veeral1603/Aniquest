@@ -14,7 +14,7 @@ export default function Footer() {
 
         <div className={styles.footerText}>
           <p>
-            A React.js project by <span>Veeral Narang</span>
+            Made with ♡ by <span>Veeral Narang</span>
           </p>
           <div className={styles.socialIcons}>
             <a
@@ -23,7 +23,7 @@ export default function Footer() {
             >
               <FontAwesomeIcon icon={faLinkedin} className={styles.linkedIn} />
             </a>
-            <a href="https://github.com/veeral1603" target="_blank">
+            <a href="https://github.com/veeral1603/Aniquest" target="_blank">
               <FontAwesomeIcon icon={faGithub} className={styles.gitHub} />
             </a>
           </div>

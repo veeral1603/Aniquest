@@ -28,6 +28,13 @@ export default function Search() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = keyword
+      ? `Search Results: ${keyword}`
+      : `Search Anime - AniQuest`;
+  }, [keyword]);
+
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {

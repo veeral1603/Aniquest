@@ -45,7 +45,7 @@ export default function AnimeItemList({
           <p className={styles.Info}>
             <span className={styles.Tag}>
               <FontAwesomeIcon icon={faCirclePlay} />{" "}
-              {episodes ? episodes : "?"}
+              {episodes ? episodes : "Airing"}
             </span>
             <span className={styles.dot}></span>
             {type}

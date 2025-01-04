@@ -22,6 +22,11 @@ export default function MostPopular() {
     });
   }, [currentPage]);
 
+  // Page Title
+  useEffect(() => {
+    document.title = `Most Popular - AniQuest`;
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

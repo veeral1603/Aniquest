@@ -128,11 +128,7 @@ export function SidebarMenu({ toggleMobileMenu, isOpen }) {
         </ul>
 
         <p className={styles.credits}>
-          A React project made by
-          <a href="" target="_blank">
-            {" "}
-            Veeral Narang
-          </a>
+          Made with ♡ by <span>Veeral Narang</span>
         </p>
       </div>
     </>
