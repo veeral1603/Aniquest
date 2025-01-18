@@ -179,6 +179,7 @@ export default function AnimeItemSmall({
                   <li
                     onClick={(e) => {
                       e.stopPropagation();
+                      closeMenu();
                     }}
                   >
                     <a href={trailerUrl} target="_blank_">
@@ -191,6 +192,7 @@ export default function AnimeItemSmall({
                 <li
                   onClick={(e) => {
                     e.stopPropagation();
+                    closeMenu();
                     shareAnime(mal_id);
                   }}
                 >
@@ -209,12 +211,14 @@ export default function AnimeItemSmall({
                       setWatchListData(
                         JSON.parse(localStorage.getItem("watchlist"))
                       );
+                      closeMenu();
                       return;
                     }
                     // Add from list
                     saveToWatchList(data);
                     setExistsInWatchList(true);
                     toast(`Added to watchlist!`, toastSettings);
+                    closeMenu();
                   }}
                 >
                   <button>
