@@ -205,13 +205,13 @@ export default function AnimeItemSmall({
                     e.stopPropagation();
                     if (existsInWatchList) {
                       // Remove From List
+                      closeMenu();
                       deleteFromWatchList(data);
                       setExistsInWatchList(false);
                       toast(`Removed from watchlist!`, toastSettings);
                       setWatchListData(
                         JSON.parse(localStorage.getItem("watchlist"))
                       );
-                      closeMenu();
                       return;
                     }
                     // Add from list
